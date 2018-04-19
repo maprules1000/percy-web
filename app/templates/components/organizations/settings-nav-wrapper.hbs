@@ -1,38 +1,51 @@
-<div class="container container--fixedWidth container--forContent">
-  <div class="row">
-    <div class="three columns">
-      <aside class="sidenav" data-test-sidenav>
-        <section class="sidenav-group">
-          <header class="sidenav-header">{{organization.name}}</header>
-          <ul class="sidenav-list">
-            <li class="sidenav-list-item">
-              {{#link-to "organizations.organization.settings" organization.slug classNames="sidenav-list-item-link"}}Settings{{/link-to}}
-            </li>
-            <li class="sidenav-list-item">
-              {{#link-to "organizations.organization.users" organization.slug classNames="sidenav-list-item-link"}}Users{{/link-to}}
-            </li>
-            <li class="sidenav-list-item">
-              {{#link-to "organizations.organization.billing" organization.slug classNames="sidenav-list-item-link"}}Billing{{/link-to}}
-            </li>
-          </ul>
-        </section>
-        <section class="sidenav-group">
-          <header class="sidenav-header">Project Settings</header>
-          <ul class="sidenav-list" data-test-sidenav-list-projects>
-            {{#each organization.projects as |project|}}
-              <li class="sidenav-list-item">
-                {{#link-to "organization.project.settings" organization.slug project.slug classNames="sidenav-list-item-link truncate"}}{{project.name}}{{/link-to}}
-              </li>
-            {{/each}}
-            <li class="sidenav-list-item">
-              {{#link-to "organizations.organization.projects.new" organization.slug classNames="sidenav-list-item-link text-weight-semibold"}}Start new project{{/link-to}}
-            </li>
-          </ul>
-        </section>
-      </aside>
-    </div>
-    <div class="nine columns">
-      {{yield}}
-    </div>
-  </div>
-</div>
+{{!-- <aside class="project-list-sidebar vh-full overflow-y-scroll shrink-0 p-4 sticky">
+  <ul class="list-reset mb-3">
+    {{#each sortedProjects as |project|}}
+      <li class="flex align-center mb-2 {{if project.isDisabled 'opacity-25'}}" {{action 'toggleSidebar'}}>
+        <div class="status-indicator shrink-0 mr-2 is-{{dasherize project.lastBuild.state}} is-{{if project.lastBuild.isFinished (dasherize project.lastBuild.reviewState)}}"></div>
+        {{#link-to "organization.project.index" project.organization.slug project.slug class="text-weight-semibold link-gray truncate"}}
+          {{project.name}}
+        {{/link-to}}
+      </li>
+    {{/each}}
+  </ul>
+  {{#link-to "organizations.organization.projects.new" project.organization.slug classNames="btn btn-sm btn-alt w-full text-center"}}
+    New Project
+  {{/link-to}}
+</aside> --}}
+
+<section class="flex position-relative">
+  <aside class="sidenav project-list-sidebar vh-full overflow-y-scroll shrink-0 p-4 sticky" data-test-sidenav>
+    <section class="sidenav-group">
+      <header class="sidenav-header">{{organization.name}}</header>
+      <ul class="sidenav-list">
+        <li class="sidenav-list-item">
+          {{#link-to "organizations.organization.settings" organization.slug classNames="sidenav-list-item-link"}}Settings{{/link-to}}
+        </li>
+        <li class="sidenav-list-item">
+          {{#link-to "organizations.organization.users" organization.slug classNames="sidenav-list-item-link"}}Users{{/link-to}}
+        </li>
+        <li class="sidenav-list-item">
+          {{#link-to "organizations.organization.billing" organization.slug classNames="sidenav-list-item-link"}}Billing{{/link-to}}
+        </li>
+      </ul>
+    </section>
+    <section class="sidenav-group">
+      <header class="sidenav-header">Project Settings</header>
+      <ul class="sidenav-list" data-test-sidenav-list-projects>
+        {{#each organization.projects as |project|}}
+          <li class="sidenav-list-item">
+            {{#link-to "organization.project.settings" organization.slug project.slug classNames="sidenav-list-item-link truncate"}}{{project.name}}{{/link-to}}
+          </li>
+        {{/each}}
+        <li class="sidenav-list-item">
+          {{#link-to "organizations.organization.projects.new" organization.slug classNames="sidenav-list-item-link text-weight-semibold"}}Start new project{{/link-to}}
+        </li>
+      </ul>
+    </section>
+  </aside>
+
+  <main class="flex-1 bg-gray-000">
+    {{yield}}
+  </main>
+</section>
