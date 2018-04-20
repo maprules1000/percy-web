@@ -1,0 +1,19 @@
+<div class="bar-chart position-relative">
+  {{#each yAxisIncrementMarks as |tick|}}
+    <div class="f6 text-ultra-light text-weight-bold border-bottom border-gray-000 pb-sm pt-1 px-1">
+      {{format-number tick}}
+    </div>
+  {{/each}}
+
+  <div class="grid col-auto align-end gap-sm position-absolute" style="top: 30px; right: 8px; bottom: 0; left: 72px;">
+    {{#each dayStatsFormatted as |stat|}}
+      <div class="bar-item position-relative flex align-end flex-1 h-full {{if (eq (moment-format stat.date 'D') (moment-format now 'D')) 'bar-item-today'}}" data-label="{{moment-format stat.date 'D'}}">
+        <div
+          class="bar w-full {{if (is-after stat.date [precision='days']) 'bg-gray-100 bar-future' 'bg-purple-600 hint--top hint--rounded hint--bounce'}}"
+          style="--bar-height: {{stat.percentOfHeight}}%"
+          aria-label="{{moment-format stat.date 'MMM Do'}}: {{format-number stat.count}}">
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

@@ -1,7 +1,8 @@
 import moment from 'moment';
-import {Factory} from 'ember-cli-mirage';
+import {Factory, association} from 'ember-cli-mirage';
 
 export default Factory.extend({
+  currentUsageStats: association(),
   billingEmail(i) {
     return `billing-email-${i}@example.com`;
   },

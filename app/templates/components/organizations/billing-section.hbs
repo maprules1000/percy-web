@@ -1,5 +1,26 @@
 <section class="p-2">
   <div class="bg-white rounded shadow-1">
-    {{ember-chart type="bar" data=CHARTDATA options=CHARTOPTIONS height="400"}}
+    <div class="flex align-center justify-between p-6">
+      <div class="flex align-center f00">
+        {{inline-svg 'comparison-icon-lg' class="mr-2"}}
+        <div>
+          <div class="lh-1">
+            {{format-number organization.subscription.currentUsageStats.total}}
+          </div>
+          <div class="f6 text-light text-weight-semibold">
+            Current Visual Validations
+          </div>
+        </div>
+      </div>
+      <div class="text-right">
+        <div class="f5 text-weight-semibold">
+          {{moment-format organization.subscription.currentPeriodStart 'MMMM Do YYYY'}} - {{moment-format organization.subscription.currentPeriodEndDisplayed 'MMMM Do YYYY'}}
+        </div>
+        <span class="f6 text-weight-bold bg-purple-600 text-white text-right py-sm px-1" style="border-radius: 11px;">
+          Current Billing Period
+        </span>
+      </div>
+    </div>
+    {{organizations/billing-usage-graph organization=organization}}
   </div>
 </section>

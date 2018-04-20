@@ -7,6 +7,7 @@ FactoryGuy.define('organization', {
     name: () => faker.company.companyName(),
 
     projects: FactoryGuy.hasMany('project'),
+    subscription: FactoryGuy.belongsTo('subscription'),
     versionControlIntegrations: FactoryGuy.hasMany('version-control-integration'),
     repos: FactoryGuy.hasMany('repo'),
   },
