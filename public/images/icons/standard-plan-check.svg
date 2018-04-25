@@ -1,0 +1,14 @@
+<svg width="40" height="40" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Canvas" fill="none">
+<g id="Group">
+<g id="Rectangle 2">
+<rect width="40" height="40" rx="20" fill="#FBFAFC"/>
+<rect x="0.625" y="0.625" width="38.75" height="38.75" rx="19.375" stroke-width="1.25" stroke="#9E66BF"/>
+</g>
+<g id="Path 2">
+<path d="M 0 3.94267L 3.18335 7.07L 10.494 0" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" transform="translate(15 17)" stroke="#9E66BF"/>
+</g>
+</g>
+</g>
+</svg>
+

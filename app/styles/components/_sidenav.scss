@@ -56,3 +56,9 @@
     background: var(--lightest-gray);
   }
 }
+
+.settings-sidebar {
+  a.active {
+    box-shadow: inset 4px 0 0 var(--purple-600);
+  }
+}
