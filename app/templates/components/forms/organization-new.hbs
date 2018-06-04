@@ -1,11 +1,11 @@
 <form action="javascript:;">
   {{form-fields/input
-      property="name"
-      title="Organization name"
-      changeset=changeset
-      validateProperty=(action "validateProperty" changeset "name")
-      autofocus=true
-      placeholder="Acme Co."
+    property="name"
+    title="Organization name"
+    changeset=changeset
+    validateProperty=(action "validateProperty" changeset "name")
+    autofocus=true
+    placeholder="Acme Co."
   }}
   {{#if errorMessage}}
     <div class="Form-errors">
@@ -16,5 +16,6 @@
     value="Create Organization"
     classes="Button Button--primary"
     submit=(action "save")
+    disabled=isSubmitDisabled
   }}
 </form>

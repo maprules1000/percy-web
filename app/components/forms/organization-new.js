@@ -3,11 +3,14 @@ import BaseFormComponent from './base';
 import OrganizationNewValidations from '../../validations/organization-new';
 
 export default BaseFormComponent.extend({
-  marketplaceListingPlanId: null,
-  classes: null,
-
   classNames: ['FormsOrganizationNew', 'Form'],
   classNameBindings: ['classes'],
+
+  classes: null,
+  marketplaceListingPlanId: null,
+  isSubmitDisabled: false,
+
+  validator: OrganizationNewValidations,
 
   // Setup data for creating an org from different billing providers and marketplaces.
   _billingProvider: computed('marketplaceListingPlanId', function() {
@@ -31,5 +34,4 @@ export default BaseFormComponent.extend({
       billingProviderData: this.get('_billingProviderData'),
     });
   }),
-  validator: OrganizationNewValidations,
 });
