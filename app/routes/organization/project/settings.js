@@ -7,8 +7,9 @@ export default Route.extend(AuthenticatedRouteMixin, {
     const project = this.modelFor('organization.project');
     const organization = this.modelFor('organization');
     const projects = this.store.query('project', {organization: organization});
+    const browserFamilies = this.get('store').findAll('browserFamily');
 
-    return hash({organization, project, projects});
+    return hash({organization, project, projects, browserFamilies});
   },
 
   actions: {

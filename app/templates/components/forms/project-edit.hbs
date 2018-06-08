@@ -17,7 +17,17 @@
     </div>
   </div>
 
-  <h2 class="text-xl font-semibold mt-3 mb-sm" data-test-auto-approve-branches-header>Auto-Approve Branches</h2>
+  <h2 class="text-xl font-semibold mt-3 mb-sm">Browsers</h2>
+  <div class="btn-group">
+    {{#each browserFamilies as |family|}}
+      <button class="btn btn-square relative {{if (contains family.id project.browserFamilyIds) "is-browser-active"}}">
+        {{inline-svg (concat family.slug "-browser-icon") class="opacity-25"}}
+      </button>
+    {{/each}}
+  </div>
+
+
+  <h2 class="text-xl font-semibold mt-3 mb-sm">Auto-Approve Branches</h2>
   <p class="text-gray-400 mb-2">
     Builds with branches that match this filter will be automatically approved and won't require
     manual approval.
