@@ -26,7 +26,10 @@ export default DS.Model.extend({
   tokens: DS.hasMany('token', {async: true}),
 
   projectBrowserTargets: DS.hasMany('projectBrowserTargets', {async: false}),
-  browserTargets: DS.hasMany('browserTargets', {async: false}),
+  // browserTargets: DS.hasMany('browserTargets', {async: false, inverse: null}),
+  browserTargets: computed('projectBrowserTargets.@each.browserTarget', function() {
+    return this.get('projectBrowserTargets').mapBy('browserTarget');
+  }),
 
   browserFamilies: computed('browserTargets.@each.browserFamily', function() {
     return this.get('browserTargets').mapBy('browserFamily');

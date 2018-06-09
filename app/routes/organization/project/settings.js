@@ -23,21 +23,24 @@ export default Route.extend(AuthenticatedRouteMixin, {
     updateProjectBrowserTargets(targetFamily) {
       const project = this.modelFor(this.routeName).project;
       const existingBrowserTargets = project.get('browserTargets');
-      const browserTargetsByFamilyId = {}
+      const browserTargetsByFamilyId = {};
 
       // TODO why doesn't this relationship work?
       const allProjectBrowserTargets = this.get('store').peekAll('projectBrowserTarget');
-      const projectBrowserTargetsForProject = allProjectBrowserTargets.filterBy('project.id', project.get('id'))
+      const projectBrowserTargetsForProject = allProjectBrowserTargets.filterBy(
+        'project.id',
+        project.get('id'),
+      );
 
-      existingBrowserTargets.forEach((browserTarget) => {
+      existingBrowserTargets.forEach(browserTarget => {
         browserTargetsByFamilyId[browserTarget.get('browserFamily.id')] = browserTarget;
       });
 
-      console.log(browserTargetsByFamilyId)
+      console.log(browserTargetsByFamilyId);
       if (targetFamily.get('id') in browserTargetsByFamilyId) {
-        console.log('remove it')
+        console.log('remove it');
         if (existingBrowserTargets.get('length') === 1) {
-          console.log('cant have no browsers')
+          console.log('cant have no browsers');
           return;
         }
 
@@ -48,7 +51,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
         projectBrowserTargetForFamily.destroyRecord();
         // remove it
       } else {
-        console.log('add it')
+        console.log('add it');
         const newProjectBrowserTarget = this.get('store').createRecord('projectBrowserTarget', {
           project,
           _browserFamily: targetFamily,
@@ -56,8 +59,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
         newProjectBrowserTarget.save();
       }
-      // if project has browser target in family already, remove it
-      // If project does not have it already, add it
-    }
+    },
   },
 });
