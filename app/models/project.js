@@ -31,8 +31,14 @@ export default DS.Model.extend({
     return this.get('projectBrowserTargets').mapBy('browserTarget');
   }),
 
-  browserFamilies: computed('browserTargets.@each.browserFamily', function() {
-    return this.get('browserTargets').mapBy('browserFamily');
+  browserFamilies: computed('projectBrowserTargets.@each.browserTarget', function() {
+    // TODO: why are sometimes they undefined?
+    const browserTargets = this.get('projectBrowserTargets').mapBy('browserTarget')
+      .filter((target) => {
+        return !!target;
+      });
+
+    return browserTargets.mapBy('browserFamily');
   }),
 
   _lastBuild: computed('organization', 'slug', 'builds', function() {
