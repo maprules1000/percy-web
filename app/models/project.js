@@ -28,8 +28,8 @@ export default DS.Model.extend({
   projectBrowserTargets: DS.hasMany('projectBrowserTargets', {async: false}),
   browserTargets: DS.hasMany('browserTargets', {async: false}),
 
-  browserFamilyIds: computed('browserTargets.@each.browserFamily', function() {
-    return this.get('browserTargets').mapBy('browserFamily.id');
+  browserFamilies: computed('browserTargets.@each.browserFamily', function() {
+    return this.get('browserTargets').mapBy('browserFamily');
   }),
 
   _lastBuild: computed('organization', 'slug', 'builds', function() {
