@@ -26,15 +26,11 @@ export default DS.Model.extend({
   tokens: DS.hasMany('token', {async: true}),
 
   projectBrowserTargets: DS.hasMany('projectBrowserTargets', {async: false}),
-  // browserTargets: DS.hasMany('browserTargets', {async: false, inverse: null}),
-  browserTargets: computed('projectBrowserTargets.@each.browserTarget', function() {
-    return this.get('projectBrowserTargets').mapBy('browserTarget');
-  }),
 
   browserFamilies: computed('projectBrowserTargets.@each.browserTarget', function() {
-    // TODO: why are sometimes they undefined?
-    const browserTargets = this.get('projectBrowserTargets').mapBy('browserTarget')
-      .filter((target) => {
+    const browserTargets = this.get('projectBrowserTargets')
+      .mapBy('browserTarget')
+      .filter(target => {
         return !!target;
       });
 

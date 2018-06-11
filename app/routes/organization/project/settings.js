@@ -1,8 +1,11 @@
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import {hash} from 'rsvp';
+import {inject as service} from '@ember/service';
 
 export default Route.extend(AuthenticatedRouteMixin, {
+  flashMessages: service(),
+
   model() {
     const project = this.modelFor('organization.project');
     const organization = this.modelFor('organization');
@@ -10,6 +13,23 @@ export default Route.extend(AuthenticatedRouteMixin, {
     const browserFamilies = this.get('store').findAll('browserFamily');
 
     return hash({organization, project, projects, browserFamilies});
+  },
+
+  _removeProjectBrowserTargetForFamily(familyToRemove, project) {
+    const projectBrowserTargetForFamily = project.get('projectBrowserTargets').find(function(pbt) {
+      return pbt.get('browserTarget.browserFamily.id') === familyToRemove.get('id');
+    });
+
+    projectBrowserTargetForFamily.destroyRecord();
+  },
+
+  _addProjectBrowserTargetForFamily(familyToAdd, project) {
+    const newProjectBrowserTarget = this.get('store').createRecord('projectBrowserTarget', {
+      project,
+      _browserFamily: familyToAdd,
+    });
+
+    newProjectBrowserTarget.save();
   },
 
   actions: {
@@ -22,42 +42,27 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
     updateProjectBrowserTargets(targetFamily) {
       const project = this.modelFor(this.routeName).project;
-      const existingBrowserTargets = project.get('browserTargets');
-      const browserTargetsByFamilyId = {};
+      const projectBrowserTargetsForProject = project.get('projectBrowserTargets');
+      const existingBrowserTargets = projectBrowserTargetsForProject.mapBy('browserTarget');
 
-      // TODO why doesn't this relationship work?
-      const allProjectBrowserTargets = this.get('store').peekAll('projectBrowserTarget');
-      const projectBrowserTargetsForProject = allProjectBrowserTargets.filterBy(
-        'project.id',
-        project.get('id'),
+      const existingBrowserTargetsByFamilyId = existingBrowserTargets.reduce(
+        (acc, browserTarget) => {
+          acc[browserTarget.get('browserFamily.id')] = browserTarget;
+          return acc;
+        },
+        {},
       );
 
-      existingBrowserTargets.forEach(browserTarget => {
-        browserTargetsByFamilyId[browserTarget.get('browserFamily.id')] = browserTarget;
-      });
+      const projectHasBrowserFamily = targetFamily.get('id') in existingBrowserTargetsByFamilyId;
 
-      console.log(browserTargetsByFamilyId);
-      if (targetFamily.get('id') in browserTargetsByFamilyId) {
-        console.log('remove it');
+      if (projectHasBrowserFamily) {
         if (existingBrowserTargets.get('length') === 1) {
-          console.log('cant have no browsers');
+          this.get('flashMessages').info('A project must have at least one browser');
           return;
         }
-
-        const projectBrowserTargetForFamily = projectBrowserTargetsForProject.find(function(pbt) {
-          return pbt.get('browserTarget.browserFamily.id') === targetFamily.get('id');
-        });
-
-        projectBrowserTargetForFamily.destroyRecord();
-        // remove it
+        this._removeProjectBrowserTargetForFamily(targetFamily, project);
       } else {
-        console.log('add it');
-        const newProjectBrowserTarget = this.get('store').createRecord('projectBrowserTarget', {
-          project,
-          _browserFamily: targetFamily,
-        });
-
-        newProjectBrowserTarget.save();
+        this._addProjectBrowserTargetForFamily(targetFamily, project);
       }
     },
   },
