@@ -1,11 +1,9 @@
-// import {computed} from '@ember/object';
 import {readOnly, mapBy} from '@ember/object/computed';
-// import PollingMixin from 'percy-web/mixins/polling';
-// import {inject as service} from '@ember/service';
+import {inject as service} from '@ember/service';
 import Component from '@ember/component';
-// import moment from 'moment';
 
 export default Component.extend({
+  flashMessages: service(),
   project: null,
   allBrowserFamilies: null,
 
@@ -15,7 +13,7 @@ export default Component.extend({
 
   actions: {
     updateProjectBrowserTargets(targetFamily) {
-      // {<str:familyId>: <Obj:browserTarget>}
+      // {<str:browserFamilyId>: <Obj:browserTarget>}
       const existingBrowserTargetsByFamilyId = this.get('existingBrowserTargets').reduce(
         (acc, browserTarget) => {
           acc[browserTarget.get('browserFamily.id')] = browserTarget;
