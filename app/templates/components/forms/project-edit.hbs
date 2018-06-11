@@ -17,15 +17,11 @@
     </div>
   </div>
 
-  <h2 class="text-xl font-semibold mt-3 mb-sm">Browsers</h2>
-  <div class="btn-group">
-    {{#each browserFamilies as |family|}}
-      <button class="btn btn-square relative {{if (contains family.id (map-by 'id' project.browserFamilies)) "is-browser-active"}}" {{action updateProjectBrowserTargets family}}>
-        {{inline-svg (concat family.slug "-browser-icon") class="opacity-25"}}
-      </button>
-    {{/each}}
-  </div>
-
+  {{projects/browser-family-selector
+    allBrowserFamilies=browserFamilies
+    project=project
+    updateProjectBrowserTargets=updateProjectBrowserTargets
+  }}
 
   <h2 class="text-xl font-semibold mt-3 mb-sm">Auto-Approve Branches</h2>
   <p class="text-gray-400 mb-2">
