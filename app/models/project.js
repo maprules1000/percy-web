@@ -27,16 +27,6 @@ export default DS.Model.extend({
 
   projectBrowserTargets: DS.hasMany('projectBrowserTargets', {async: false}),
 
-  browserFamilies: computed('projectBrowserTargets.@each.browserTarget', function() {
-    const browserTargets = this.get('projectBrowserTargets')
-      .mapBy('browserTarget')
-      .filter(target => {
-        return !!target;
-      });
-
-    return browserTargets.mapBy('browserFamily');
-  }),
-
   _lastBuild: computed('organization', 'slug', 'builds', function() {
     return this.store.query('build', {project: this, page: {limit: 1}});
   }),

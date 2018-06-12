@@ -1,6 +1,7 @@
 import {readOnly, mapBy} from '@ember/object/computed';
 import {inject as service} from '@ember/service';
 import Component from '@ember/component';
+import {rejectUndefined} from 'percy-web/lib/computed/reject-undefined';
 
 export default Component.extend({
   flashMessages: service(),
@@ -8,7 +9,13 @@ export default Component.extend({
   allBrowserFamilies: null,
 
   projectBrowserTargets: readOnly('project.projectBrowserTargets'),
-  existingBrowserTargets: mapBy('projectBrowserTargets', 'browserTarget'),
+
+  _existingBrowserTargets: mapBy('projectBrowserTargets', 'browserTarget'),
+  existingBrowserTargets: rejectUndefined('_existingBrowserTargets'),
+
+  _existingBrowserFamilies: mapBy('existingBrowserTargets', 'browserFamily'),
+  existingBrowserFamilies: rejectUndefined('_existingBrowserFamilies'),
+
   numExistingBrowserTargets: readOnly('existingBrowserTargets.length'),
 
   actions: {
