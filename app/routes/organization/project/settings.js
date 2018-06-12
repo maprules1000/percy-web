@@ -33,7 +33,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     addProjectBrowserTargetForFamily(familyToAdd, project) {
       const newProjectBrowserTarget = this.get('store').createRecord('projectBrowserTarget', {
         project,
-        _browserFamily: familyToAdd,
+        browserFamily: familyToAdd,
       });
 
       newProjectBrowserTarget.save();
