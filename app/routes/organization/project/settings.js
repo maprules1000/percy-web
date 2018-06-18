@@ -1,8 +1,10 @@
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import {hash} from 'rsvp';
+import {inject as service} from '@ember/service';
 
 export default Route.extend(AuthenticatedRouteMixin, {
+  dialogs: service(),
   model() {
     const project = this.modelFor('organization.project');
     const organization = this.modelFor('organization');
@@ -27,7 +29,15 @@ export default Route.extend(AuthenticatedRouteMixin, {
           return pbt.get('browserTarget.browserFamily.id') === familyToRemove.get('id');
         });
 
-      projectBrowserTargetForFamily.destroyRecord();
+      this.get('dialogs').confirm({
+        message: 'Are you sure?',
+        actionOk: () => {
+          projectBrowserTargetForFamily.destroyRecord();
+        }, // Use arrow function to keep the scope
+        actionCancel: () => {
+          return;
+        },
+      });
     },
 
     addProjectBrowserTargetForFamily(familyToAdd, project) {
