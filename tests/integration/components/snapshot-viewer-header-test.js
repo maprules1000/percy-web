@@ -102,6 +102,15 @@ describe('Integration: SnapshotViewerHeader', function() {
         expect(SnapshotViewerHeaderPO.dropdownOptions(1).text).to.equal('Download new source');
         percySnapshot(this.test);
       });
+
+      it('shows download source diff option when base snapshot exists', function() {
+        this.set('comparison.headSnapshot', headSnapshot);
+        this.set('comparison.baseSnapshot', baseSnapshot);
+
+        SnapshotViewerHeaderPO.clickDropdownToggle();
+        expect(SnapshotViewerHeaderPO.dropdownOptions(3).text).to.equal('Download source diff');
+        percySnapshot(this.test);
+      });
     });
   });
 
