@@ -1,5 +1,4 @@
 
-<h2 class="text-xl font-semibold mt-3 mb-sm">Browsers</h2>
 <div class="btn-group">
   {{#each allBrowserFamilies as |family|}}
     <button class="btn btn-square relative {{if (contains family.id (map-by 'id' existingBrowserFamilies)) "is-browser-active"}}" {{action "updateProjectBrowserTargets" family}}>

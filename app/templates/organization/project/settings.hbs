@@ -22,13 +22,22 @@
   <section class="p-2">
     {{#if model.project.isEnabled}}
       <div class="bg-white rounded shadow-1 p-2 mb-2">
+        <h2 class="text-xl font-semibold mb-1">Project Browsers</h2>
+          <div class="p-2 bg-gray-000 rounded border mb-2">
+            {{projects/browser-family-selector
+              allBrowserFamilies=model.browserFamilies
+              project=model.project
+              removeProjectBrowserTargetForFamily=(route-action "removeProjectBrowserTargetForFamily")
+              addProjectBrowserTargetForFamily=(route-action "addProjectBrowserTargetForFamily")
+            }}
+          </div>
+      </div>
+      <div class="bg-white rounded shadow-1 p-2 mb-2">
         <h2 class="text-xl font-semibold mb-1">Project Details</h2>
         {{forms/project-edit
           project=model.project
           browserFamilies=model.browserFamilies
           saveSuccess="projectUpdated"
-          removeProjectBrowserTargetForFamily=(route-action "removeProjectBrowserTargetForFamily")
-          addProjectBrowserTargetForFamily=(route-action "addProjectBrowserTargetForFamily")
         }}
       </div>
 
