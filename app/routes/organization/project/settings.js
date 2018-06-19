@@ -23,17 +23,19 @@ export default Route.extend(AuthenticatedRouteMixin, {
     },
 
     removeProjectBrowserTargetForFamily(familyToRemove, project) {
-      const projectBrowserTargetForFamily = project
-        .get('projectBrowserTargets')
-        .find(function(pbt) {
-          return pbt.get('browserTarget.browserFamily.id') === familyToRemove.get('id');
-        });
-
       this.get('dialogs').confirm({
-        message: 'Are you sure?',
+        message: `Removing a browser from your project will reduce your snapshot usage.
+        If you would like to add the browser back at some point in the future,
+        the browser will be updated to our newest version of that browser,
+        and the subsequent build will create a new baseline for that browser.`,
         actionOk: () => {
+          const projectBrowserTargetForFamily = project
+            .get('projectBrowserTargets')
+            .find(function(pbt) {
+              return pbt.get('browserTarget.browserFamily.id') === familyToRemove.get('id');
+            });
           projectBrowserTargetForFamily.destroyRecord();
-        }, // Use arrow function to keep the scope
+        },
         actionCancel: () => {
           return;
         },
@@ -41,12 +43,19 @@ export default Route.extend(AuthenticatedRouteMixin, {
     },
 
     addProjectBrowserTargetForFamily(familyToAdd, project) {
-      const newProjectBrowserTarget = this.get('store').createRecord('projectBrowserTarget', {
-        project,
-        browserFamily: familyToAdd,
+      this.get('dialogs').confirm({
+        message: 'PLEASE NOTE: Adding a browser to your project will increase your snapshot usage.',
+        actionOk: () => {
+          const newProjectBrowserTarget = this.get('store').createRecord('projectBrowserTarget', {
+            project,
+            browserFamily: familyToAdd,
+          });
+          newProjectBrowserTarget.save();
+        },
+        actionCancel: () => {
+          return;
+        },
       });
-
-      newProjectBrowserTarget.save();
     },
   },
 });
