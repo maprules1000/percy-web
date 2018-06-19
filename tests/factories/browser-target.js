@@ -3,9 +3,7 @@ import faker from 'faker';
 
 FactoryGuy.define('browser-target', {
   default: {
-    browserFamily: () => {
-      return FactoryGuy.make('browser-family');
-    },
+    browserFamily: FactoryGuy.belongsTo('browser-target'),
     versionTarget: faker.random.number,
   },
 });

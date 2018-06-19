@@ -1,4 +1,5 @@
 import {readOnly, mapBy} from '@ember/object/computed';
+import {computed} from '@ember/object';
 import {inject as service} from '@ember/service';
 import Component from '@ember/component';
 import {rejectUndefined} from 'percy-web/lib/computed/reject-undefined';
@@ -7,6 +8,11 @@ export default Component.extend({
   flashMessages: service(),
   project: null,
   allBrowserFamilies: null,
+  sortedAllBrowserFamilies: computed('allBrowserFamilies.@each.slug', function() {
+    const chromeFamily = this.get('allBrowserFamilies').findBy('slug', 'chrome');
+    const notChromeFamilies = this.get('allBrowserFamilies').rejectBy('slug', 'chrome');
+    return [chromeFamily].concat(notChromeFamilies);
+  }),
 
   projectBrowserTargets: readOnly('project.projectBrowserTargets'),
 

@@ -35,15 +35,12 @@ export const BrowserSwitcher = {
     },
   },
 
-  switchBrowser() {
-    const activeBrowser = this.buttons()
-      .toArray()
-      .findBy('isActive');
-    if (activeBrowser.isChrome) {
-      return this.firefoxButton.click();
-    } else {
-      return this.chromeButton.click();
-    }
+  clickChrome() {
+    this.chromeButton.click();
+  },
+
+  clickFirefox() {
+    this.firefoxButton.click();
   },
 };
 

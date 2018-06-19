@@ -1,6 +1,6 @@
 
 <div class="btn-group" data-test-browser-family-selector>
-  {{#each allBrowserFamilies as |family|}}
+  {{#each sortedAllBrowserFamilies as |family|}}
     <button
       class="btn btn-square relative {{if (contains family.id (map-by 'id' existingBrowserFamilies)) "is-browser-active"}} {{concat "data-test-browser-selector-" family.slug}}"
       {{action "updateProjectBrowserTargets" family}}
