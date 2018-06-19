@@ -254,6 +254,20 @@ export default function() {
     }
   });
 
+  this.get('/browser-families', function(schema) {
+    schema.browserFamilies.create({
+      id: '1',
+      slug: 'firefox',
+      name: 'Firefox',
+    });
+    schema.browserFamilies.create({
+      id: '2',
+      slug: 'chrome',
+      name: 'Chrome',
+    });
+    return schema.browserFamilies.all();
+  });
+
   this.get('/snapshots/:id');
   this.get('/builds/:id');
   this.get('/builds/:build_id/comparisons');
