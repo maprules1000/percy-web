@@ -1,7 +1,10 @@
 
-<div class="btn-group">
+<div class="btn-group" data-test-browser-family-selector>
   {{#each allBrowserFamilies as |family|}}
-    <button class="btn btn-square relative {{if (contains family.id (map-by 'id' existingBrowserFamilies)) "is-browser-active"}}" {{action "updateProjectBrowserTargets" family}}>
+    <button
+      class="btn btn-square relative {{if (contains family.id (map-by 'id' existingBrowserFamilies)) "is-browser-active"}} {{concat "data-test-browser-selector-" family.slug}}"
+      {{action "updateProjectBrowserTargets" family}}
+      data-test-browser-selector-button>
       {{inline-svg (concat family.slug "-browser-icon") class="opacity-25"}}
     </button>
   {{/each}}
