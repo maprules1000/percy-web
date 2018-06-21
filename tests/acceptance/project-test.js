@@ -95,16 +95,9 @@ describe('Acceptance: Project', function() {
         isEnabled: false,
         organization,
       });
-      enabledProject = server.create('project', {name: 'Enabled Project', organization});
-      const firefoxBrowserTarget = server.create('browserTarget', 'withFirefoxBrowserFamily');
-      const chromeBrowserTarget = server.create('browserTarget', 'withChromeBrowserFamily');
-      server.create('projectBrowserTarget', {
-        project: enabledProject,
-        browserTarget: firefoxBrowserTarget,
-      });
-      server.create('projectBrowserTarget', {
-        project: enabledProject,
-        browserTarget: chromeBrowserTarget,
+      enabledProject = server.create('project', 'withChromeAndFirefox', {
+        name: 'Enabled Project',
+        organization,
       });
     });
 
