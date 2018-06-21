@@ -103,12 +103,23 @@ describe('Integration: SnapshotViewerHeader', function() {
         percySnapshot(this.test);
       });
 
-      it('shows download source diff option when base snapshot exists', function() {
-        this.set('comparison.headSnapshot', headSnapshot);
+      it('shows download source diff when base and head both exist', function() {
         this.set('comparison.baseSnapshot', baseSnapshot);
+        this.set('comparison.headSnapshot', headSnapshot);
 
         SnapshotViewerHeaderPO.clickDropdownToggle();
-        expect(SnapshotViewerHeaderPO.dropdownOptions(3).text).to.equal('Download source diff');
+        expect(SnapshotViewerHeaderPO.dropdownOptions().contains('Download source diff')).to.be
+          .true;
+        percySnapshot(this.test);
+      });
+
+      it('does not show download source diff when there is only a base snapshot', function() {
+        this.set('comparison.baseSnapshot', headSnapshot);
+
+        SnapshotViewerHeaderPO.clickDropdownToggle();
+        expect(SnapshotViewerHeaderPO.dropdownOptions().count).to.equal(2);
+        expect(SnapshotViewerHeaderPO.dropdownOptions().contains('Download source diff')).to.be
+          .false;
         percySnapshot(this.test);
       });
     });
