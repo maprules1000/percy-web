@@ -1,0 +1,74 @@
+.browser-family-selector {
+  transition: border 250ms, box-shadow 250ms, background 250ms;
+
+  &:hover:not(.is-browser-active) {
+    border: 1px solid var(--blue-500);
+    box-shadow: 0 0 16px rgba(29, 141, 219, 0.2);
+    background: url("/images/pattern-on-white.svg"), var(--blue-000);
+    animation: move-background 8s linear infinite;
+    @at-root {
+      @keyframes move-background {
+        100% { background-position: -300px 0; }
+      }
+    }
+
+    .browser-family-selector-detail {
+      transform: translate3d(0, 26px, 0);
+
+      svg {
+        transform: scale(1.1);
+        // animation: down-up 1s linear infinite;
+        // @at-root {
+        //   @keyframes down-up {
+        //     0% {
+        //       animation-timing-function: ease-out;
+        //     }
+        //     50% {
+        //       transform: translate3d(0, -12px, 0);
+        //       animation-timing-function: ease-in;
+        //     }
+        //   }
+        // }
+      }
+    }
+
+    .browser-family-selector-enable {
+      opacity: 0;
+    }
+  }
+
+  &.is-browser-active {
+    border-color: var(--purple-600);
+    background: url("/images/pattern-on-white.svg"), var(--purple-200);
+  }
+
+  &:not(.is-browser-active) {
+    .browser-family-selector-name {
+      transition: transform 250ms;
+      transform: translate3d(-24px, 0, 0);
+    }
+
+    &:hover {
+      .browser-family-selector-name {
+        transform: translate3d(0, 0, 0);
+
+        span {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.browser-family-selector-detail {
+  transition: transform 250ms;
+
+  svg {
+    transition: transform 250ms;
+    transform-origin: center 100%
+  }
+}
+
+.browser-family-selector-enable {
+  transition: opacity 250ms;
+}
