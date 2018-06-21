@@ -2,7 +2,7 @@ import Mirage from 'ember-cli-mirage';
 
 export default function() {
   // Enable this to see verbose request logging from mirage:
-  // this.logging = true;
+  this.logging = true;
 
   this.passthrough('http://api.amplitude.com');
 
@@ -265,7 +265,8 @@ export default function() {
       slug: 'chrome',
       name: 'Chrome',
     });
-    return schema.browserFamilies.all();
+
+    return schema.browserFamilies.find(['1', '2']);
   });
 
   this.get('/snapshots/:id');

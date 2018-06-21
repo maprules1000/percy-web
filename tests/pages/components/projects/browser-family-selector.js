@@ -5,7 +5,7 @@ const SELECTORS = {
   BUTTON: '[data-test-browser-selector-button]',
 };
 
-export const BrowserSwitcher = {
+export const BrowserFamilySelector = {
   scope: SELECTORS.BROWSER_FAMILY_SELECTOR,
 
   buttons: collection({
@@ -44,4 +44,4 @@ export const BrowserSwitcher = {
   },
 };
 
-export default create(BrowserSwitcher);
+export default create(BrowserFamilySelector);

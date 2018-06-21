@@ -96,6 +96,16 @@ describe('Acceptance: Project', function() {
         organization,
       });
       enabledProject = server.create('project', {name: 'Enabled Project', organization});
+      const firefoxBrowserTarget = server.create('browserTarget', 'withFirefoxBrowserFamily');
+      const chromeBrowserTarget = server.create('browserTarget', 'withChromeBrowserFamily');
+      server.create('projectBrowserTarget', {
+        project: enabledProject,
+        browserTarget: firefoxBrowserTarget,
+      });
+      server.create('projectBrowserTarget', {
+        project: enabledProject,
+        browserTarget: chromeBrowserTarget,
+      });
     });
 
     it('for disabled', async function() {
@@ -144,6 +154,10 @@ describe('Acceptance: Project', function() {
       await percySnapshot(this.test);
 
       expect(ProjectSettingsPage.isAutoApproveBranchesVisible).to.equal(true);
+    });
+
+    it('displays browser selection section', function() {
+      expect(false).to.be.true;
     });
   });
 

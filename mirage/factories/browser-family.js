@@ -11,4 +11,9 @@ export default Factory.extend({
     name: 'Chrome',
     slug: 'chrome',
   }),
+
+  firefox: trait({
+    name: 'Firefox',
+    slug: 'firefox',
+  }),
 });
