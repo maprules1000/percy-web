@@ -102,25 +102,93 @@ describe('Integration: SnapshotViewerHeader', function() {
         expect(SnapshotViewerHeaderPO.dropdownOptions(1).text).to.equal('Download new source');
         percySnapshot(this.test);
       });
+    });
 
-      it('shows download source diff when base and head both exist', function() {
-        this.set('comparison.baseSnapshot', baseSnapshot);
-        this.set('comparison.headSnapshot', headSnapshot);
+    describe('download source diff', function() {
+      let comparison;
+      let baseSnapshot;
+      let headSnapshot;
 
-        SnapshotViewerHeaderPO.clickDropdownToggle();
-        expect(SnapshotViewerHeaderPO.dropdownOptions().contains('Download source diff')).to.be
-          .true;
-        percySnapshot(this.test);
+      describe('When a snapshot comparison has a visual diff', function() {
+        beforeEach(function() {
+          comparison = make('comparison');
+          baseSnapshot = make('snapshot');
+          headSnapshot = make('snapshot');
+          this.set('comparison', comparison);
+          this.set('snapshot', headSnapshot);
+
+          this.render(hbs`{{snapshot-viewer-header
+            snapshot=snapshot
+            toggleViewMode=stub
+            updateSelectedWidth=stub
+            selectedComparison=comparison
+            activeBrowser=browser
+          }}`);
+        });
+
+        it('shows download source diff', function() {
+          this.set('comparison.baseSnapshot', baseSnapshot);
+          this.set('comparison.headSnapshot', headSnapshot);
+
+          SnapshotViewerHeaderPO.clickDropdownToggle();
+          expect(SnapshotViewerHeaderPO.dropdownOptions().contains('Download source diff')).to.be
+            .true;
+          percySnapshot(this.test);
+        });
       });
 
-      it('does not show download source diff when there is only a base snapshot', function() {
-        this.set('comparison.baseSnapshot', headSnapshot);
+      describe('When a shapshot comparison has no visual diff', function() {
+        beforeEach(function() {
+          comparison = make('comparison');
+          baseSnapshot = make('snapshot', 'withNoDiffs');
+          headSnapshot = make('snapshot', 'withNoDiffs');
+          this.set('comparison', comparison);
+          this.set('snapshot', headSnapshot);
 
-        SnapshotViewerHeaderPO.clickDropdownToggle();
-        expect(SnapshotViewerHeaderPO.dropdownOptions().count).to.equal(2);
-        expect(SnapshotViewerHeaderPO.dropdownOptions().contains('Download source diff')).to.be
-          .false;
-        percySnapshot(this.test);
+          this.render(hbs`{{snapshot-viewer-header
+            snapshot=snapshot
+            toggleViewMode=stub
+            updateSelectedWidth=stub
+            selectedComparison=comparison
+            activeBrowser=browser
+          }}`);
+        });
+
+        it('shows download source diff', function() {
+          this.set('comparison.baseSnapshot', headSnapshot);
+          this.set('comparison.headSnapshot', headSnapshot);
+
+          SnapshotViewerHeaderPO.clickDropdownToggle();
+          expect(SnapshotViewerHeaderPO.dropdownOptions().contains('Download source diff')).to.be
+            .true;
+          percySnapshot(this.test);
+        });
+      });
+
+      describe('When a head snapshot has no base to compare', function() {
+        beforeEach(function() {
+          comparison = make('comparison');
+          headSnapshot = make('snapshot');
+          this.set('comparison', comparison);
+          this.set('snapshot', headSnapshot);
+
+          this.render(hbs`{{snapshot-viewer-header
+            snapshot=snapshot
+            toggleViewMode=stub
+            updateSelectedWidth=stub
+            selectedComparison=comparison
+            activeBrowser=browser
+          }}`);
+        });
+
+        it('does not show download source diff', function() {
+          this.set('comparison.headSnapshot', headSnapshot);
+
+          SnapshotViewerHeaderPO.clickDropdownToggle();
+          expect(SnapshotViewerHeaderPO.dropdownOptions().contains('Download source diff')).to.be
+            .false;
+          percySnapshot(this.test);
+        });
       });
     });
   });
