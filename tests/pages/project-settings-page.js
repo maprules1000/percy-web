@@ -3,6 +3,7 @@ import {SettingsNavWrapper} from 'percy-web/tests/pages/components/organizations
 import {ProjectEdit} from 'percy-web/tests/pages/components/forms/project-edit';
 import {alias} from 'ember-cli-page-object/macros';
 import {BrowserFamilySelector} from 'percy-web/tests/pages/components/projects/browser-family-selector'; // eslint-disable-line
+import {dialog} from 'percy-web/tests/pages/components/dialogs';
 
 export const ProjectSettingsPage = {
   visitProjectSettings: visitable('/:orgSlug/:projectSlug/settings'),
@@ -15,6 +16,10 @@ export const ProjectSettingsPage = {
   isAutoApproveBranchesVisible: alias('projectEditForm.isAutoApproveBranchesVisible'),
 
   browserSelector: BrowserFamilySelector,
+  browserToggleConfirmationDialog: dialog,
+  browserToggleConfirmationText: alias('browserToggleConfirmationDialog.message.text'),
+  clickOkBrowserToggleConfirmation: alias('browserToggleConfirmationDialog.buttonOk.click'),
+  clickCancelBrowserToggleConfirmation: alias('browserToggleConfirmationDialog.buttonCancel'),
 };
 
 export default create(ProjectSettingsPage);

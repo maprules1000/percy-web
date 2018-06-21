@@ -11,7 +11,11 @@ export default Component.extend({
   sortedAllBrowserFamilies: computed('allBrowserFamilies.@each.slug', function() {
     const chromeFamily = this.get('allBrowserFamilies').findBy('slug', 'chrome');
     const notChromeFamilies = this.get('allBrowserFamilies').rejectBy('slug', 'chrome');
-    return [chromeFamily].concat(notChromeFamilies);
+    if (chromeFamily) {
+      return [chromeFamily].concat(notChromeFamilies);
+    } else {
+      return notChromeFamilies;
+    }
   }),
 
   projectBrowserTargets: readOnly('project.projectBrowserTargets'),
