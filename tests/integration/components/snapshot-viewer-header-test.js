@@ -116,6 +116,8 @@ describe('Integration: SnapshotViewerHeader', function() {
           headSnapshot = make('snapshot');
           this.set('comparison', comparison);
           this.set('snapshot', headSnapshot);
+          this.set('comparison.baseSnapshot', baseSnapshot);
+          this.set('comparison.headSnapshot', headSnapshot);
 
           this.render(hbs`{{snapshot-viewer-header
             snapshot=snapshot
@@ -127,9 +129,6 @@ describe('Integration: SnapshotViewerHeader', function() {
         });
 
         it('shows download source diff', function() {
-          this.set('comparison.baseSnapshot', baseSnapshot);
-          this.set('comparison.headSnapshot', headSnapshot);
-
           SnapshotViewerHeaderPO.clickDropdownToggle();
           expect(SnapshotViewerHeaderPO.dropdownOptions().contains('Download source diff')).to.be
             .true;
@@ -144,6 +143,8 @@ describe('Integration: SnapshotViewerHeader', function() {
           headSnapshot = make('snapshot', 'withNoDiffs');
           this.set('comparison', comparison);
           this.set('snapshot', headSnapshot);
+          this.set('comparison.baseSnapshot', headSnapshot);
+          this.set('comparison.headSnapshot', headSnapshot);
 
           this.render(hbs`{{snapshot-viewer-header
             snapshot=snapshot
@@ -155,9 +156,6 @@ describe('Integration: SnapshotViewerHeader', function() {
         });
 
         it('shows download source diff', function() {
-          this.set('comparison.baseSnapshot', headSnapshot);
-          this.set('comparison.headSnapshot', headSnapshot);
-
           SnapshotViewerHeaderPO.clickDropdownToggle();
           expect(SnapshotViewerHeaderPO.dropdownOptions().contains('Download source diff')).to.be
             .true;
@@ -171,6 +169,7 @@ describe('Integration: SnapshotViewerHeader', function() {
           headSnapshot = make('snapshot');
           this.set('comparison', comparison);
           this.set('snapshot', headSnapshot);
+          this.set('comparison.headSnapshot', headSnapshot);
 
           this.render(hbs`{{snapshot-viewer-header
             snapshot=snapshot
@@ -182,8 +181,6 @@ describe('Integration: SnapshotViewerHeader', function() {
         });
 
         it('does not show download source diff', function() {
-          this.set('comparison.headSnapshot', headSnapshot);
-
           SnapshotViewerHeaderPO.clickDropdownToggle();
           expect(SnapshotViewerHeaderPO.dropdownOptions().contains('Download source diff')).to.be
             .false;
