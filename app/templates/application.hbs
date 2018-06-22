@@ -24,32 +24,3 @@
     {{/each}}
   </div>
 {{/if}}
-
-{{#ember-dialogs as |params|}}
-  <div class="bg-white rounded shadow-dark-lg p-4 container-md">
-    {{#if params.message}}
-      <div>{{{params.message}}}</div>
-    {{/if}}
-
-    {{#if (eq params.type 'prompt')}}
-      {{input
-        class       = 'input'
-        value       = params.userInput
-        placeholder = params.placeholder
-        enter       = (action params.actionOk params.userInput)
-      }}
-    {{/if}}
-
-    <div class="flex justify-end">
-      {{#if params.shouldDisplayCancel}}
-        <button class="btn" {{action params.actionCancel}}>
-          {{params.labelCancel}}
-        </button>
-      {{/if}}
-
-      <button class="btn btn-primary shadow-purple-lg ml-1" {{action params.actionOk params.userInput}}>
-        {{params.labelOk}}
-      </button>
-    </div>
-  </div>
-{{/ember-dialogs}}

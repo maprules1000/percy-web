@@ -210,6 +210,25 @@ button,
   }
 }
 
+.btn-approve {
+  color: var(--white);
+  background: var(--green-500);
+  box-shadow: 0 4px 12px rgba(67, 205, 84, 0.3);
+
+  &:hover {
+    color: var(--white);
+    background: var(--green-500);
+    border: 1px solid transparent;
+  }
+
+  &:focus,
+  &:focus:active {
+    color: var(--white);
+    background: var(--green-500);
+    border: 1px solid transparent;
+  }
+}
+
 .btn-sm {
   padding: 2px 6px;
   font-size: 12px;
@@ -228,7 +247,6 @@ button,
   cursor: pointer;
   background: var(--purple-600);
   transition: transform 250ms;
-  backface-visibility: hidden;
 
   &:hover {
     color: var(--white);

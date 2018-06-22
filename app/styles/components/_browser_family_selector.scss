@@ -1,5 +1,5 @@
 .browser-family-selector {
-  transition: border 250ms, box-shadow 250ms, background 250ms;
+  transition: border 250ms, box-shadow 250ms, background 250ms, transform 250ms;
 
   &:hover:not(.is-browser-active) {
     border: 1px solid var(--blue-500);
@@ -58,6 +58,11 @@
       }
     }
   }
+}
+
+.browser-family-selector-confirmation {
+  transition: transform 250ms;
+  background: url("/images/pattern-on-white.svg"), var(--white);
 }
 
 .browser-family-selector-detail {

@@ -1,26 +1,46 @@
 <div class="grid col-2 gap-2" data-test-browser-family-selector>
   {{#each sortedAllBrowserFamilies as |family|}}
-    <div
-      class="browser-family-selector overflow-hidden cursor-pointer flex justify-center bg-white-pattern border border-transparent rounded p-3 shadow-1 {{if (contains family.id (map-by 'id' existingBrowserFamilies)) "is-browser-active"}} {{concat "data-test-browser-selector-" family.slug}}"
-      {{action "updateProjectBrowserTargets" family}}
-      data-test-browser-selector-button>
-      <div class="browser-family-selector-detail flex flex-col items-center">
-        {{inline-svg (concat family.slug "-icon-lg") class="mb-1"}}
-        <div class="browser-family-selector-name font-semibold leading-none mb-2">
-          {{#unless (contains family.id (map-by 'id' existingBrowserFamilies))}}
-            <span class="opacity-0">Enable</span>
-          {{/unless}}
-          {{capitalize family.slug}}
-        </div>
-        {{#if (contains family.id (map-by 'id' existingBrowserFamilies))}}
-        <div class="border border-purple-400 bg-purple-300 rounded-full text-purple-600 text-sm font-semibold px-2 py-sm">
-          Enabled
-        </div>
-        {{else}}
-          <div class="browser-family-selector-enable border rounded text-gray-300 text-sm font-semibold px-2 py-sm">
-            Enable Browser
+    <div class="relative" style="perspective: 1000px;" {{action "updateProjectBrowserTargets" family}}>
+      <div
+        class="browser-family-selector overflow-hidden cursor-pointer flex justify-center bg-white-pattern border border-transparent rounded p-3 shadow-1 {{if (contains family.id (map-by 'id' existingBrowserFamilies)) "is-browser-active"}} {{concat "data-test-browser-selector-" family.slug}} {{if addingClasstoBrowsersForTest 'opacity-50'}}"
+        style="z-index: 1; backface-visibility: hidden; {{if addingClasstoBrowsersForTest 'transform: rotateY(180deg);'}}"
+        data-test-browser-selector-button>
+        <div class="browser-family-selector-detail flex flex-col items-center">
+          {{inline-svg (concat family.slug "-icon-lg") class="mb-1"}}
+          <div class="browser-family-selector-name font-semibold leading-none mb-2">
+            {{#unless (contains family.id (map-by 'id' existingBrowserFamilies))}}
+              <span class="opacity-0">Enable</span>
+            {{/unless}}
+            {{capitalize family.slug}}
           </div>
-        {{/if}}
+          {{#if (contains family.id (map-by 'id' existingBrowserFamilies))}}
+          <div class="border border-purple-400 bg-purple-300 rounded-full text-purple-600 text-sm font-semibold px-2 py-sm">
+            Enabled
+          </div>
+          {{else}}
+            <div class="browser-family-selector-enable border rounded text-gray-300 text-sm font-semibold px-2 py-sm">
+              Enable Browser
+            </div>
+          {{/if}}
+        </div>
+      </div>
+
+      <div
+        class="browser-family-selector-confirmation flex items-center absolute pin-t lin-l w-full h-full overflow-hidden bg-white rounded shadow-1 p-3"
+        style="z-index: 2; backface-visibility: hidden; transform: rotateY(180deg); {{if addingClasstoBrowsersForTest 'transform: rotateY(360deg)'}}">
+        <div>
+          {{inline-svg (concat family.slug "-browser-icon") class="mb-1"}}
+          <p class="text-gray-400">Keep in mind: Adding a browser to your project will increase your snapshot usage.</p>
+          <div class="flex justify-end">
+            <button class="btn">
+              Cancel
+            </button>
+
+            <button class="btn btn-approve ml-2">
+              Add Browser
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   {{/each}}
