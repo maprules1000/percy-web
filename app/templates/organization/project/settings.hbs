@@ -26,13 +26,25 @@
         <p class="text-gray-400 mb-2">
           This setting lets you change which browser your snapshots are created in. Better yet, you can enable multiple browsers for cross browser testing snapshots!
         </p>
-        <div class="p-2 bg-gray-000 rounded border">
+        <div class="p-2 bg-gray-000 rounded border mb-2">
           {{projects/browser-family-selector
             allBrowserFamilies=model.browserFamilies
             project=model.project
             removeProjectBrowserTargetForFamily=(route-action "removeProjectBrowserTargetForFamily")
             addProjectBrowserTargetForFamily=(route-action "addProjectBrowserTargetForFamily")
           }}
+
+          <div class="rounded bg-yellow-000 border border-yellow-100 p-2 mt-2">
+            <strong>Reminder:</strong> Adding a browser to your project will increase your snapshot usage.
+          </div>
+
+          <div class="rounded bg-yellow-000 border border-yellow-100 p-2 mt-2">
+            <strong>Reminder:</strong> Removing a browser from your project will reduce your snapshot usage.
+            If you would like to add the browser back at some point in the future,
+            the browser will be updated to our newest version of that browser,
+            and the subsequent build will create a new baseline for that browser.
+          </div>
+
         </div>
       </div>
       <div class="bg-white rounded shadow-1 p-2 mb-2">

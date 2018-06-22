@@ -24,10 +24,13 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
     removeProjectBrowserTargetForFamily(familyToRemove, project) {
       this.get('dialogs').confirm({
-        message: `Removing a browser from your project will reduce your snapshot usage.
-        If you would like to add the browser back at some point in the future,
-        the browser will be updated to our newest version of that browser,
-        and the subsequent build will create a new baseline for that browser.`,
+        message: `
+          <h2 class="text-xl font-semibold mb-sm">Removing Browsers</h2>
+          <p class="text-gray-400">Removing a browser from your project will reduce your snapshot usage.
+          If you would like to add the browser back at some point in the future,
+          the browser will be updated to our newest version of that browser,
+          and the subsequent build will create a new baseline for that browser.</p>
+        `,
         actionOk: () => {
           const projectBrowserTargetForFamily = project
             .get('projectBrowserTargets')
@@ -44,7 +47,10 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
     addProjectBrowserTargetForFamily(familyToAdd, project) {
       this.get('dialogs').confirm({
-        message: 'PLEASE NOTE: Adding a browser to your project will increase your snapshot usage.',
+        message: `
+          <h2 class="text-xl font-semibold mb-sm">Project Browsers</h2>
+          <p class="text-gray-400">Keep in mind: Adding a browser to your project will increase your snapshot usage.</p>
+        `,
         actionOk: () => {
           const newProjectBrowserTarget = this.get('store').createRecord('projectBrowserTarget', {
             project,
