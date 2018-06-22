@@ -134,17 +134,19 @@
 <section class="container container--marketing">
   <div class="container container--fixedWidth container--forContent u-text-center">
     <div class="row u-text-center">
-      <h2>Multiple browser support</h2>
+      <h2>Cross-browser visual testing</h2>
       <h3 class="text-xl md:text-2xl">Test your app in both Chrome and Firefox!</h3>
       <p class="text-gray-400">
-        Catch subtle differences caused by browser rendering differences.
+        Catch subtle differences caused by browser rendering differences by testing with both Firefox and Chrome. Double your visual coverage and reducing manual browser testing time.
+        <br/>
+        {{!-- TODO: update to real docs page when it exists --}}
+        {{#link-to "docs.page" "learn/"}}See docs{{/link-to}}
       </p>
     </div>
 
-    <div class="grid col-2 gap-2">
-      <div>{{inline-svg "chrome-icon-lg" class="mb-1"}}</div>
-      <div>{{inline-svg "firefox-icon-lg" class="mb-1"}}</div>
-    </div>
+      <p class="mt-3">
+        <img class="u-capped-width" style="width: 400px;" src="/images/percy-browsers.png">
+      </p>
 
   </div>
 </section>
