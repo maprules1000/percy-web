@@ -65,19 +65,14 @@
   }
 
   &.Header--dark {
-    color: var(--white);
-    background-color: var(--dark-purple);
-
     select {
       color: var(--text-color);
       border: 0;
     }
 
     a:not(.Button) {
-      color: var(--white);
-
       &:hover {
-        color: var(--lightest-purple); // TODO need to class these header items to prevent the nesting specificity
+        color: var(--purple-600); // TODO need to class these header items to prevent the nesting specificity
       }
     }
 

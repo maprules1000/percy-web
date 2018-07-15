@@ -1,4 +1,4 @@
-<div class="Header Header--dark flex justify-between items-center w-full">
+<header class="Header Header--dark bg-white border-b flex justify-between items-center">
   <div class="flex items-center">
     {{#if session.isAuthenticated}}
       {{#link-to "index"}}
@@ -19,7 +19,7 @@
     {{/if}}
     {{#if currentOrganization}}
       {{#if (eq "admin" currentOrganization.currentUserMembership.role)}}
-        {{#link-to "organizations.organization.settings" currentOrganization.slug data-test-settings-link=true class="hide-on-mobile"}}Settings{{/link-to}}
+        {{#link-to "organizations.organization.settings" currentOrganization.slug data-test-settings-link=true class="hide-on-mobile text-gray-700"}}Settings{{/link-to}}
       {{/if}}
     {{/if}}
   </div>
@@ -31,4 +31,4 @@
   {{else}}
     {{nav-menu}}
   {{/if}}
-</div>
+</header>
