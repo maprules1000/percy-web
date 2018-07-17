@@ -42,10 +42,14 @@
             {{#if isCustom}}
               <a href="#" class="btn btn-primary shadow-purple-lg mb-0" {{action handleSelection}}>{{buttonText}}</a>
             {{else}}
-              {{organizations/billing-card-updater
-                organization=organization
-                newPlanId=planData.id
-              }}
+              {{#if organization.subscription.isCustomer}}
+                <button class="btn btn-primary shadow-purple-lg mb-0" {{action "updateExistingSubscription"}}>Choose subscription</button>
+              {{else}}
+                {{organizations/billing-card-updater
+                  organization=organization
+                  newPlanId=planData.id
+                }}
+              {{/if}}
 {{!--               {{stripe-checkout
                 organization=organization
                 planId=planData.id
