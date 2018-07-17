@@ -55,9 +55,8 @@
     {{#each subscriptionData.PLANS as |planData|}}
       {{organizations/subscription-list-item
         planData=planData
-        plan=plan
+        existingPlan=plan
         organization=organization
-        handleSelection=changingSubscription
       }}
     {{/each}}
 
@@ -69,7 +68,7 @@
         numDiffsTitle="Unlimited"
       )
       buttonText="Contact Us"
-      plan=plan
+      existingPlan=plan
       organization=organization
       handleSelection=transitionToEnterpriseForm
     }}
