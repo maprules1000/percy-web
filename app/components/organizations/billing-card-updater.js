@@ -12,6 +12,7 @@ export default Component.extend({
 
   tagName: '',
   options: StripeOptions,
+  newPlanId: null,
   isCardComplete: false,
   isUpdatingCard: false,
 
@@ -37,7 +38,7 @@ export default Component.extend({
   },
 
   _updateCreditCard: task(function*(stripeElement) {
-    const planId = this.get('planId');
+    const planId = this.get('newPlanId') || this.get('planId');
     const response = yield this.get('stripeService').createToken(stripeElement);
     this._changeSubscription(planId, response.token);
   }),
@@ -46,10 +47,11 @@ export default Component.extend({
     const organization = this.get('organization');
     const subscriptionService = this.get('subscriptionService');
 
-    // expect organization to have plan if they are able to update card
-    const plan = this.get('store').peekRecord('plan', planId);
-
-    const savingPromise = subscriptionService.changeSubscription(organization, plan, token);
+    const savingPromise = subscriptionService.changeSubscription.perform(
+      organization,
+      planId,
+      token,
+    );
     this.get('_updateSubscriptionSavingStatus').perform(savingPromise);
   },
 

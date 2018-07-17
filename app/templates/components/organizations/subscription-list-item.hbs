@@ -42,14 +42,18 @@
             {{#if isCustom}}
               <a href="#" class="btn btn-primary shadow-purple-lg mb-0" {{action handleSelection}}>{{buttonText}}</a>
             {{else}}
-              {{stripe-checkout
+              {{organizations/billing-card-updater
+                organization=organization
+                newPlanId=planData.id
+              }}
+{{!--               {{stripe-checkout
                 organization=organization
                 planId=planData.id
                 price=planData.monthlyPrice
                 planName=planData.name
                 classes="btn btn-primary shadow-purple-lg mb-0"
                 changingSubscription=handleSelection
-              }}
+              }} --}}
             {{/if}}
           {{/if}}
         {{/if}}
