@@ -8025,18 +8025,6 @@ percy-client@^2.8.0:
   optionalDependencies:
     lint-staged "^7.0.4"
 
-"percy-docs@git+https://github.com/percy/percy-docs.git#3aad4c6e194f6c800c599c4854affb97d96665d0":
-  version "0.0.0"
-  resolved "git+https://github.com/percy/percy-docs.git#3aad4c6e194f6c800c599c4854affb97d96665d0"
-  dependencies:
-    broccoli-flatiron "git+https://github.com/percy/broccoli-flatiron.git"
-    broccoli-funnel "^2.0.1"
-    broccoli-merge-trees "^2.0.0"
-    ember-cli-babel "^6.8.2"
-    eslint "^4.19.1"
-    eslint-plugin-ember "^5.2.0"
-    eslint-plugin-node "^6.0.1"
-
 perfectionist@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/perfectionist/-/perfectionist-2.4.0.tgz#c147ad3714e126467f1764129ee72df861d47ea0"
