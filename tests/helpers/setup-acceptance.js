@@ -38,7 +38,7 @@ export function renderAdapterErrorsAsPage(callbackThatReturnsAPromise) {
   let adapterException = Ember.Test.adapter.exception;
   Ember.Test.adapter.exception = error => {
     if (error.isAdapterError) {
-      Ember.Logger.info('Rendering exception:', error, ' as application error page');
+      console.info('Rendering exception:', error, ' as application error page'); // eslint-disable-line
       return null;
     } else {
       return adapterException(error);

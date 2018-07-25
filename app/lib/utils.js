@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import Ember from 'ember';
 import config from '../config/environment';
 import AdminMode from 'percy-web/lib/admin-mode';
 
@@ -32,16 +31,14 @@ export default {
 
     var path = config.APP.apiUrls[key];
     if (!path) {
-      Ember.Logger.error('API path not found for key: ' + key);
+      console.error('API path not found for key: ' + key); // eslint-disable-line
       return;
     }
 
     // If the path requires formatting, make sure the right number of args have been given.
     var numFormatsRequired = (path.match(/%@/g) || []).length;
     if (numFormatsRequired !== otherArgs.length) {
-      Ember.Logger.error(
-        'Mismatched number of formatting args for: ' + path + '\nGot: ' + otherArgs,
-      );
+      console.error('Mismatched number of formatting args for: ' + path + '\nGot: ' + otherArgs); // eslint-disable-line
       return;
     } else {
       otherArgs.forEach(function(arg) {
