@@ -1,0 +1,259 @@
+{{title "Features"}}
+<header class="primary-hero bg-purple-gradient text-white pb-2">
+  <div class="container container-xl">
+    <div class="flex justify-between items-center mb-9">
+      {{inline-svg "percy-full-horizontal-on-dark"}}
+      <div class="flex justify-end pt-2 mb-2 text-white font-semibold">
+        {{#if session.isAuthenticated}}
+          {{nav-menu user=session.currentUser}}
+        {{else}}
+          <div class="flex justify-end pt-2 mb-4">
+            {{nav-menu}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="container container-lg mb-3">
+    <div class="w-3/4 mb-9">
+      <h1 class="text-2xl md:text-3xl md:text-4xl font-normal mb-2">Percy Changelog</h1>
+      <div class="w-3/4">
+        <h2 class="text-xl font-normal mb-3">Have a look at what we're building to make automated visual testing more efficient and accessible to all.</h2>
+      </div>
+      <div class="mb-2">
+        {{#if session.isAuthenticated}}
+          {{goto-app
+            redirectToDefaultOrganization="redirectToDefaultOrganization"
+            data-test-index-goto-app=true
+          }}
+        {{else}}
+          {{login-button showLoginModal="showLoginModal"}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="container container-lg py-9 mb-9">
+  <div class="grid col-2 mb-9">
+    <div class="grid content-center justify-center">
+      <img src="#" alt="Smart Visual Diffs">
+    </div>
+    <div class="">
+      <h6 class="text-sm font-bold">
+        SMART VISUAL DIFFS
+      </h6>
+      <h3 class="text-4xl font-bold">
+        Visual coverage across your entire UI
+      </h3>
+      <p class="">
+        Percy detects and highlights pixel-by-pixel visual diffs across your web applications and component libraries.
+      </p>
+    </div>
+  </div>
+  <div class="grid col-3 gap-4">
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="container container-lg py-9 mb-9">
+  <div class="grid col-2 mb-9">
+    <div class="">
+      <h6 class="text-sm font-bold">
+        SMART VISUAL DIFFS
+      </h6>
+      <h3 class="text-4xl font-bold">
+        Visual coverage across your entire UI
+      </h3>
+      <p class="">
+        Percy detects and highlights pixel-by-pixel visual diffs across your web applications and component libraries.
+      </p>
+    </div>
+    <div class="grid content-center justify-center">
+      <img src="#" alt="Smart Visual Diffs">
+    </div>
+  </div>
+  <div class="grid col-3 gap-4">
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="container container-lg py-9 mb-9">
+  <div class="grid col-2 mb-9">
+    <div class="grid content-center justify-center">
+      <img src="#" alt="Smart Visual Diffs">
+    </div>
+    <div class="">
+      <h6 class="text-sm font-bold">
+        SMART VISUAL DIFFS
+      </h6>
+      <h3 class="text-4xl font-bold">
+        Visual coverage across your entire UI
+      </h3>
+      <p class="">
+        Percy detects and highlights pixel-by-pixel visual diffs across your web applications and component libraries.
+      </p>
+    </div>
+  </div>
+  <div class="grid col-3 gap-4">
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="container container-lg py-9 mb-9">
+  <div class="grid col-2 mb-9">
+    <div class="">
+      <h6 class="text-sm font-bold">
+        SMART VISUAL DIFFS
+      </h6>
+      <h3 class="text-4xl font-bold">
+        Visual coverage across your entire UI
+      </h3>
+      <p class="">
+        Percy detects and highlights pixel-by-pixel visual diffs across your web applications and component libraries.
+      </p>
+    </div>
+    <div class="grid content-center justify-center">
+      <img src="#" alt="Smart Visual Diffs">
+    </div>
+  </div>
+  <div class="grid col-3 gap-4">
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+    <div class="">
+      <div class="">
+        <img src="#" alt="icon">
+      </div>
+      <div class="font-semibold">
+        Pixel-by-pixel Diffs
+      </div>
+      <p>
+        Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-gray-pattern">
+  <div class="container-md relative pt-8 pb-4">
+
+  </div>
+</section>
+
+{{main-footer}}
