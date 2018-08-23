@@ -68,3 +68,13 @@
 .trans-opacity {
   transition-property: opacity;
 }
+
+.lead-marketing::after {
+  content: "";
+  display: block;
+  position: relative;
+  top: 2px;
+  width: 50%;
+  height: 1px;
+  background: var(--purple-300);
+}
