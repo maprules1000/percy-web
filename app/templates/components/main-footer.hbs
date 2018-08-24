@@ -1,31 +1,104 @@
-<footer class="bg-gray-800 main-footer container-full grid justify-center py-3">
-  <div class="grid col-auto gap-3 items-center justify-center main-footer-link-set-left">
-    {{#link-to "docs" class="main-footer-item"}}Docs{{/link-to}}
-    <a href="https://blog.percy.io" class="main-footer-item">Blog</a>
-    {{#link-to "pricing" class="main-footer-item"}}Pricing{{/link-to}}
-    <a href="https://status.percy.io/" class="main-footer-item">Status</a>
+<footer class="bg-gray-700 text-white container-full py-8">
+  <div class="container-lg grid col-4 mb-8">
+    <div>
+      <div>
+        <div class="inline-block half-underline half-underline-on-dark text-lg font-semibold leading-loosest mb-2">
+          Product
+        </div>
+      </div>
+      <a href="#" class="block font-semibold link-gray mb-sm">Visual Testing</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Features</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Integrations</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Pricing</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Enterprise</a>
+    </div>
+    <div>
+      <div>
+        <div class="inline-block half-underline half-underline-on-dark text-lg font-semibold leading-loosest mb-2">
+          Resources
+        </div>
+      </div>
+      <a href="#" class="block font-semibold link-gray mb-sm">Customers</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Guides</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Blog</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">FAQ's</a>
+    </div>
+    <div>
+      <div>
+        <div class="inline-block half-underline half-underline-on-dark text-lg font-semibold leading-loosest mb-2">
+          Development
+        </div>
+      </div>
+      <a href="#" class="block font-semibold link-gray mb-sm">Documentation</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Changelog</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Open Source</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Status</a>
+    </div>
+    <div>
+      <div>
+        <div class="inline-block half-underline half-underline-on-dark text-lg font-semibold leading-loosest mb-2">
+          Company
+        </div>
+      </div>
+      <a href="#" class="block font-semibold link-gray mb-sm">About</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Privacy</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Security</a>
+      <a href="#" class="block font-semibold link-gray mb-sm">Terms</a>
+    </div>
   </div>
-  <div class="grid col-auto gap-3 items-center justify-center mx-1 main-footer-icons">
-    <a href="https://twitter.com/percy_io" target="_blank" rel="noopener" class="light-icon">
-      <figure class="svg-container">
-        {{inline-svg "twitter-icon" class="light-icon"}}
-      </figure>
-    </a>
-    <a href="https://percy.io">
-      <figure class="svg-container">
-        {{inline-svg "percy-logo-small-on-light"}}
-      </figure>
-    </a>
-    <a href="https://github.com/percy" target="_blank" rel="noopener" class="light-icon">
-      <figure class="svg-container">
-        {{inline-svg "github-icon" class="light-icon"}}
-      </figure>
-    </a>
+  <div class="container-lg flex justify-between">
+    <div class="flex items-center">
+      <a href="https://percy.io" class="mr-2">
+        <figure class="svg-container">
+          {{inline-svg "/marketing/logo-full-white"}}
+        </figure>
+      </a>
+      <div class="font-semibold text-base">
+        &#169; {{moment-format (now) 'YYYY'}}
+      </div>
+    </div>
+    <div class="flex items-center">
+      <a href="https://twitter.com/percy_io" target="_blank" rel="noopener" class="mr-2">
+        <figure class="svg-container">
+          {{inline-svg "marketing/twitter-icon-white"}}
+        </figure>
+      </a>
+      <a href="https://github.com/percy" target="_blank" rel="noopener">
+        <figure class="svg-container">
+          {{inline-svg "marketing/github-icon-white"}}
+        </figure>
+      </a>
+    </div>
   </div>
-  <div class="grid col-auto gap-3 items-center justify-center main-footer-link-set-right">
-    {{#link-to "security" class="main-footer-item"}}Security{{/link-to}}
-    {{#link-to "terms" class="main-footer-item"}}Legal{{/link-to}}
-    {{#link-to "changelog" class="main-footer-item"}}Changelog{{/link-to}}
-    {{#link-to "team" class="main-footer-item"}}Team{{/link-to}}
-  </div>
+
 </footer>
+
+{{!-- <div class="grid col-auto gap-3 items-center justify-center main-footer-link-set-left">
+  {{#link-to "docs" class="main-footer-item"}}Docs{{/link-to}}
+  <a href="https://blog.percy.io" class="main-footer-item">Blog</a>
+  {{#link-to "pricing" class="main-footer-item"}}Pricing{{/link-to}}
+  <a href="https://status.percy.io/" class="main-footer-item">Status</a>
+</div>
+<div class="grid col-auto gap-3 items-center justify-center mx-1 main-footer-icons">
+  <a href="https://twitter.com/percy_io" target="_blank" rel="noopener" class="light-icon">
+    <figure class="svg-container">
+      {{inline-svg "twitter-icon" class="light-icon"}}
+    </figure>
+  </a>
+  <a href="https://percy.io">
+    <figure class="svg-container">
+      {{inline-svg "percy-logo-small-on-light"}}
+    </figure>
+  </a>
+  <a href="https://github.com/percy" target="_blank" rel="noopener" class="light-icon">
+    <figure class="svg-container">
+      {{inline-svg "github-icon" class="light-icon"}}
+    </figure>
+  </a>
+</div>
+<div class="grid col-auto gap-3 items-center justify-center main-footer-link-set-right">
+  {{#link-to "security" class="main-footer-item"}}Security{{/link-to}}
+  {{#link-to "terms" class="main-footer-item"}}Legal{{/link-to}}
+  {{#link-to "changelog" class="main-footer-item"}}Changelog{{/link-to}}
+  {{#link-to "team" class="main-footer-item"}}Team{{/link-to}}
+</div> --}}

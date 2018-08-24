@@ -69,7 +69,7 @@
   transition-property: opacity;
 }
 
-.lead-marketing::after {
+.half-underline::after {
   content: "";
   display: block;
   position: relative;
@@ -77,4 +77,8 @@
   width: 50%;
   height: 1px;
   background: var(--purple-300);
+}
+
+.half-underline-on-dark::after {
+  background: var(--gray-500);
 }
