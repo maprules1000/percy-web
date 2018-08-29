@@ -4,21 +4,25 @@ import {inject as service} from '@ember/service';
 import {readOnly} from '@ember/object/computed';
 import {task} from 'ember-concurrency';
 import handleOptionalAuthGetError from 'percy-web/lib/handle-optionally-authenticated-fetch-error';
+import utils from 'percy-web/lib/utils';
+import EnsureStatefulLogin from 'percy-web/mixins/ensure-stateful-login';
+import {AUTH_REDIRECT_LOCALSTORAGE_KEY} from 'percy-web/router';
+import {getOwner} from '@ember/application';
 
-export default Route.extend({
+export default Route.extend(EnsureStatefulLogin, {
   session: service(),
   store: service(),
   currentUser: readOnly('session.currentUser'),
 
   async beforeModel(transition) {
-    const currentUser = this.get('currentUser');
-
     try {
       // If we get a project, it is accessible to whoever's asking for it. Keep going.
       const project = await this.get('_getProject').perform(transition.params);
       this.set('_project', project);
+      console.log('parent route beforeModel')
       return this._super(...arguments);
     } catch (e) {
+      const currentUser = this.get('currentUser');
       return handleOptionalAuthGetError(e, currentUser, this);
     }
   },
