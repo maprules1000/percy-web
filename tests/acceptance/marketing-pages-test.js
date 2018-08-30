@@ -9,6 +9,15 @@ describe('Acceptance: Marketing pages', function() {
       expect(currentPath()).to.equal('index');
       await percySnapshot(this.test);
     });
+
+    it('can visit /features', async function() {
+      await visit('/features');
+      expect(currentPath()).to.equal('features');
+      if (takeSnapshot) {
+        await percySnapshot(this.test);
+      }
+    });
+
     it('can visit /pricing', async function() {
       await visit('/pricing');
       expect(currentPath()).to.equal('pricing');
@@ -41,6 +50,7 @@ describe('Acceptance: Marketing pages', function() {
         expect(currentPath()).to.equal(expectedPath);
       });
     });
+
     it('can visit /team', async function() {
       await visit('/team');
       expect(currentPath()).to.equal('team');
