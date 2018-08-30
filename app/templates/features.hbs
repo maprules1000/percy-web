@@ -34,237 +34,82 @@
   </div>
 </header>
 
-<section class="border-b border-purple-300 mb-9">
-  <div class="container container-lg py-9">
-    <div class="grid col-2 mb-9">
-      <div>
-        <img src="/images/icons/marketing/1.jpg" alt="Smart Visual Diffs">
-      </div>
-      <div class="grid content-center">
-        <div>
-          <h6 class="half-underline inline-block py-sm mb-2 text-sm font-bold text-gray-300 tracking-wide border-t">
-            SMART VISUAL DIFFS
-          </h6>
-          <h3 class="text-4xl font-bold leading-none">
-            Visual coverage across your entire UI
-          </h3>
-          <p class="">
-            Percy detects and highlights pixel-by-pixel visual diffs across your web applications and component libraries.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="grid col-3 gap-4 mb-9">
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/comparison"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          Pixel-by-pixel Diffs
-        </div>
-        <p>
-          Toggle between visual diffs and rendered snapshots to review visual regressions in your UI.
-        </p>
-      </div>
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/responsive"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          Responsive Diffs
-        </div>
-        <p>
-          Have confidence in the visual integrity of your UI across all your users’ devices with responsive visual diffs.
-        </p>
-      </div>
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/switch"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          Snapshot Stabilization
-        </div>
-        <p>
-          We minimize false positives by freezing video and animations, managing font services, and more.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+{{marketing/content-block
+  mainImage="/images/icons/marketing/1.jpg"
+  superHeader="SMART VISUAL DIFFS"
+  header="Visual coverage across your entire UI"
+  subheader="Percy detects and highlights pixel-by-pixel visual diffs across your web applications and component libraries."
+  imagePosition="left"
+  supportingTexts=(array
+    (hash
+      header="Pixel-by-pixel Diffs HELLo"
+      bodyText="Toggle between visual diffs and rendered snapshots to review visual regressions in your UI."
+      supportingContentIcon="/marketing/comparison"
+    )
+    (hash
+      header="Responsive Diffs"
+      bodyText="Have confidence in the visual integrity of your UI across all your users’ devices with responsive visual diffs."
+      supportingContentIcon="/marketing/responsive"
+    )
+    (hash
+      header="Snapshot Stabilization"
+      bodyText="We minimize false positives by freezing video and animations, managing font services, and more."
+      supportingContentIcon="/marketing/switch"
+    )
+  )
+}}
 
-<section class="border-b border-purple-300 mb-9">
-  <div class="container container-lg py-9">
-    <div class="grid col-2 mb-9">
-      <div class="grid content-center">
-        <div>
-          <h6 class="half-underline inline-block py-sm mb-2 text-sm font-bold text-gray-300 tracking-wide border-t">
-            REVIEWAL WORKFLOW
-          </h6>
-          <h3 class="text-4xl font-bold leading-none">
-            Review, approve & deploy with confidence
-          </h3>
-          <p class="">
-            Review relevant, high-impact visual changes with every product update.
-          </p>
-        </div>
-      </div>
-      <div>
-        <img src="/images/icons/marketing/2.jpg" alt="Smart Visual Diffs">
-      </div>
-    </div>
-    <div class="grid col-3 gap-4 mb-9">
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/eye"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          Snapshot comparisons
-        </div>
-        <p>
-          Percy’s side-by-side comparisons and diff toggle feature clearly highlight what has changed in even the most complex applications.
-        </p>
-      </div>
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/git"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          Commit synchronization
-        </div>
-        <p>
-          Percy manages baseline picking, branch logic, and approval carryforwards, so your reviews are always in sync with your workflow.
-        </p>
-      </div>
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/indicator"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          Status updates
-        </div>
-        <p>
-          Keep your team on the same page with automatic status updates in your pull requests or merge requests whenever a change is detected or approved.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+{{marketing/content-block
+  mainImage="/images/icons/marketing/2.jpg"
+  superHeader="REVIEWAL WORKFLOW"
+  header="Review, approve & deploy with confidence"
+  subheader="Review relevant, high-impact visual changes with every product update."
+  imagePosition="right"
+  supportingTexts=(array
+    (hash
+      header="Snapshot comparisons"
+      bodyText="Review relevant, high-impact visual changes with every product update."
+      supportingContentIcon="/marketing/eye"
+    )
 
-<section class="border-b border-purple-300 mb-9">
-  <div class="container container-lg py-9">
-    <div class="grid col-2 mb-9">
-      <div>
-        <img src="/images/icons/marketing/3.jpg" alt="Smart Visual Diffs">
-      </div>
-      <div class="grid content-center">
-        <div>
-          <h6 class="half-underline inline-block py-sm mb-2 text-sm font-bold text-gray-300 tracking-wide border-t">
-            RENDERING INFRASTRUCTURE
-          </h6>
-          <h3 class="text-4xl font-bold leading-none">
-            Custom rendering technology built for speed
-          </h3>
-          <p class="">
-            Run visual tests without skipping a beat.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="grid col-3 gap-4 mb-9">
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/browser"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          Cross-browser rendering
-        </div>
-        <p>
-          Catch visual regressions caused by browser rendering subtleties, and gain confidence in intended updates with Percy’s proprietary cross-browser snapshot rendering.
-        </p>
-      </div>
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/speed"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          Scalable infrastructure for high-speed rendering
-        </div>
-        <p>
-          Our custom rendering infrastructure is horizontally scalable, and built specifically for DOM snapshotting without impacting performance of existing test suites and CI environments.
-        </p>
-      </div>
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/gears"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          Parallelization capabilities
-        </div>
-        <p>
-          Percy is scalable with built-in support for complex test suites that run in parallelized CI services or parallel test runners.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+    (hash
+      header="Commit synchronization"
+      bodyText="Percy manages baseline picking, branch logic, and approval carryforwards, so your reviews are always in sync with your workflow."
+      supportingContentIcon="/marketing/git"
+    )
 
-<section>
-  <div class="container container-lg py-9">
-    <div class="grid col-2 mb-9">
-      <div class="grid content-center">
-        <div>
-          <h6 class="half-underline inline-block py-sm mb-2 text-sm font-bold text-gray-300 tracking-wide border-t">
-            INTEGRATIONS
-          </h6>
-          <h3 class="text-4xl font-bold leading-none">
-            Seamless integrations for every team
-          </h3>
-          <p class="">
-            Easily add visual coverage with Percy’s custom built integrations.
-          </p>
-        </div>
-      </div>
-      <div>
-        <img src="/images/icons/marketing/4.jpg" alt="Smart Visual Diffs">
-      </div>
-    </div>
-    <div class="grid col-3 gap-4 mb-9">
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/funnel"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          Framework agnostic implementation
-        </div>
-        <p>
-          Implement visual tests to your web app or component library with Percy’s extensive set of client libraries.
-        </p>
-      </div>
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/conveyor"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          CI service support
-        </div>
-        <p>
-          Leverage existing workflows and tests by integrating your CI/CD service–we support all the leading platforms.
-        </p>
-      </div>
-      <div class="">
-        <figure class="svg-container flex items-center h-8 mb-1">
-          {{inline-svg "/marketing/magnify"}}
-        </figure>
-        <div class="font-semibold text-lg">
-          Source code integrations
-        </div>
-        <p>
-          With Percy’s SCM integrations it’s easy to incorporate visual reviews and maintain the source of truth on every commit.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+    (hash
+      header="Status updates"
+      bodyText="Keep your team on the same page with automatic status updates in your pull requests or merge requests whenever a change is detected or approved."
+      supportingContentIcon="/marketing/indicator"
+    )
+  )
+}}
+
+{{marketing/content-block
+  mainImage="/images/icons/marketing/4.jpg"
+  superHeader="INTEGRATIONS"
+  header="Seamless integrations for every team"
+  subheader="Easily add visual coverage with Percy’s custom built integrations."
+  imagePosition="left"
+  supportingTexts=(array
+    (hash
+      header="Framework agnostic implementation"
+      bodyText="Implement visual tests to your web app or component library with Percy’s extensive set of client libraries."
+      supportingContentIcon="/marketing/funnel"
+    )
+    (hash
+      header="Leverage existing workflows and tests by integrating your CI/CD service–we support all the leading platforms."
+      bodyText="CI service support"
+      supportingContentIcon="/marketing/conveyor"
+    )
+    (hash
+      header="Source code integrations"
+      bodyText="With Percy’s SCM integrations it’s easy to incorporate visual reviews and maintain the source of truth on every commit."
+      supportingContentIcon="/marketing/magnify"
+    )
+  )
+}}
 
 <section class="bg-gray-pattern py-8 border-t">
   <div class="flex items-center justify-between container-lg">

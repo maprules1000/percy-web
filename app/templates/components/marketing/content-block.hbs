@@ -1,0 +1,60 @@
+
+<section class="border-b border-purple-300 mb-9">
+  <div class="container container-lg py-9">
+    <div class="grid col-2 mb-9">
+
+      {{#if mainImage}}
+        <div>
+          <img src={{mainImage}} alt="Smart Visual Diffs">
+        </div>
+      {{/if}}
+
+      <div class="grid content-center">
+        <div>
+
+          {{#if superHeader}}
+            <h6 class="half-underline inline-block py-sm mb-2 text-sm font-bold text-gray-300 tracking-wide border-t">
+              {{superHeader}}
+            </h6>
+          {{/if}}
+
+          {{#if header}}
+            <h3 class="text-4xl font-bold leading-none">
+              {{header}}
+            </h3>
+          {{/if}}
+
+          {{#if subheader}}
+            <p class="">
+              {{subheader}}
+            </p>
+          {{/if}}
+
+        </div>
+      </div>
+    </div>
+
+    <div class="grid col-3 gap-4 mb-9">
+      {{#each supportingTexts as |supportingText|}}
+        <div class="">
+          {{#if supportingText.supportingContentIcon}}
+            <figure class="svg-container flex items-center h-8 mb-1">
+              {{inline-svg supportingText.supportingContentIcon}}
+            </figure>
+          {{/if}}
+          {{#if supportingText.header}}
+            <div class="font-semibold text-lg">
+              {{supportingText.header}}
+            </div>
+          {{/if}}
+          {{#if supportingText.bodyText}}
+            <p>
+              {{supportingText.bodyText}}
+            </p>
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+
+  </div>
+</section>
