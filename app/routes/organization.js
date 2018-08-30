@@ -5,29 +5,17 @@ import localStorageProxy from 'percy-web/lib/localstorage';
 import {task} from 'ember-concurrency';
 import handleOptionalAuthGetError from 'percy-web/lib/handle-optionally-authenticated-fetch-error';
 import isUserMemberPromise from 'percy-web/lib/is-user-member-of-org';
-import utils from 'percy-web/lib/utils';
-import EnsureStatefulLogin from 'percy-web/mixins/ensure-stateful-login';
-import {AUTH_REDIRECT_LOCALSTORAGE_KEY} from 'percy-web/router';
-import {getOwner} from '@ember/application';
+import LoginConsistencyCheck from 'percy-web/mixins/optionally-authenticated-route-mixin';
 
-export default Route.extend(EnsureStatefulLogin, {
+export default Route.extend(LoginConsistencyCheck, {
   intercom: service(),
   session: service(),
   store: service(),
   currentUser: alias('session.currentUser'),
 
   async beforeModel(transition) {
-    const user = this.get('session').forceReloadUser();
-    const isApiLoggedIn = !!user;
-    const isClientLoggedIn = this.get('session.isAuthenticated');
-    console.log('isApiLoggedIn', isApiLoggedIn, 'isClientLoggedIn', isClientLoggedIn);
-
-    if (isApiLoggedIn && !isClientLoggedIn) {
-      // it can redirect the logged in user back to the same page.
-      const currentURL = this.router.url;
-      // const currentURL = getOwner(this).lookup('controller:application').target.currentURL;
-      localStorageProxy.set(AUTH_REDIRECT_LOCALSTORAGE_KEY, currentURL, {useSessionStorage: true});
-      return this.transitionTo('login');
+    if (!(await this.isLoginConsistent())) {
+      return this.redirectToLogin();
     }
 
     // If we get an organization, it is accessible to whoever's asking for it. Keep going.
