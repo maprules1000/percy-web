@@ -1,0 +1,32 @@
+<section class="bg-gray-pattern py-8 border-t">
+  <div class="flex items-center justify-between container-lg">
+    <div class="flex items-center">
+      <figure class="svg-container mr-2">
+        {{inline-svg "marketing/logo-lg-on-light"}}
+      </figure>
+      <div>
+        {{#if largerText}}
+          <div class="text-lg font-semibold">
+            {{largerText}}
+          </div>
+        {{/if}}
+
+        {{#if smallerText}}
+          <p class="mb-0">
+            {{smallerText}}
+          </p>
+        {{/if}}
+      </div>
+    </div>
+    <div class="btn-toolbar">
+      <button class="btn btn-primary btn-md shadow-purple-xl font-bold" type="button" name="button">
+        {{primaryButtonText}}
+      </button>
+      {{#if (and secondaryButtonText secondaryButtonLink)}}
+        <button class="btn btn-md shadow-purple-xl text-gray-700 font-bold" type="button" name="button">
+          {{secondaryButtonText}}
+        </button>
+      {{/if}}
+    </div>
+  </div>
+</section>
