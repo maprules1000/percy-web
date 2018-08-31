@@ -35,21 +35,21 @@
     </div>
 
     <div class="grid col-3 gap-4 mb-9">
-      {{#each supportingTexts as |supportingText|}}
+      {{#each supportingContents as |supportingContent|}}
         <div class="">
-          {{#if supportingText.supportingContentIcon}}
+          {{#if supportingContent.supportingContentIcon}}
             <figure class="svg-container flex items-center h-8 mb-1">
-              {{inline-svg supportingText.supportingContentIcon}}
+              {{inline-svg supportingContent.supportingContentIcon}}
             </figure>
           {{/if}}
-          {{#if supportingText.header}}
+          {{#if supportingContent.header}}
             <div class="font-semibold text-lg">
-              {{supportingText.header}}
+              {{supportingContent.header}}
             </div>
           {{/if}}
-          {{#if supportingText.bodyText}}
+          {{#if supportingContent.bodyText}}
             <p>
-              {{supportingText.bodyText}}
+              {{supportingContent.bodyText}}
             </p>
           {{/if}}
         </div>
