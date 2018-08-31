@@ -5,9 +5,9 @@ import localStorageProxy from 'percy-web/lib/localstorage';
 import {task} from 'ember-concurrency';
 import handleOptionalAuthGetError from 'percy-web/lib/handle-optionally-authenticated-fetch-error';
 import isUserMemberPromise from 'percy-web/lib/is-user-member-of-org';
-import LoginConsistencyCheck from 'percy-web/mixins/optionally-authenticated-route-mixin';
+import AuthConsistencyCheckMixin from 'percy-web/mixins/auth-consistency-check-mixin';
 
-export default Route.extend(LoginConsistencyCheck, {
+export default Route.extend(AuthConsistencyCheckMixin, {
   intercom: service(),
   session: service(),
   store: service(),

@@ -3,7 +3,7 @@ import {inject as service} from '@ember/service';
 import localStorageProxy from 'percy-web/lib/localstorage';
 import {AUTH_REDIRECT_LOCALSTORAGE_KEY} from 'percy-web/router';
 
-var OptionallyAuthenticatedRouteMixin = Mixin.create({
+var AuthConsistencyCheckMixin = Mixin.create({
   session: service(),
 
   async isLoginConsistent() {
@@ -32,4 +32,4 @@ var OptionallyAuthenticatedRouteMixin = Mixin.create({
   },
 });
 
-export default OptionallyAuthenticatedRouteMixin;
+export default AuthConsistencyCheckMixin;
