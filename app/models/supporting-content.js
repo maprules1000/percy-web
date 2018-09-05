@@ -9,4 +9,5 @@ export default Contentful.extend({
   bodyText: attr(),
   supportingContentIcon: attr(),
   supportingContentImageIcon: belongsTo('contentful-asset'), // model here: https://bit.ly/2MoN7fD
+  isMarkdown: attr(),
 });
