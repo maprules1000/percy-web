@@ -34,6 +34,12 @@
               {{md-text text=block.bodyText}}
             </p>
           {{/if}}
+
+          {{#if block.bodyText}}
+            <p class="">
+              {{md-text text=block.bodyText}}
+            </p>
+          {{/if}}
         </div>
       </div>
       {{#if (and block.mainImage (eq block.imagePosition "Right"))}}
