@@ -23,6 +23,7 @@ export default Route.extend(ResetScrollMixin, {
       hero: this.get('contentfulQuery').getHero(this.get('pageType')),
       contentBlocks: this.get('contentfulQuery').getContentBlocks(this.get('pageType')),
       footer: this.get('contentfulQuery').getFooter(this.get('footerType')),
+      logos: this.get('contentfulQuery').getCustomerLogos(),
     });
   },
 

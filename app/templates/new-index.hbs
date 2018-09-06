@@ -1,7 +1,16 @@
-{{title "Features"}}
 {{#marketing/marketing-header}}
   {{marketing/hero-block content=model.hero}}
 {{/marketing/marketing-header}}
+
+<div class="container container-lg mt-5 mb-9">
+  <div class="flex flex-wrap">
+    {{#each model.logos as |customerLogo|}}
+      <div class="w-1/5 px-4">
+        <img src="{{customerLogo.logo.file.url}}" alt="{{customerLogo.logo.description}}">
+      </div>
+    {{/each}}
+  </div>
+</div>
 
 {{#each model.contentBlocks as |contentBlock|}}
   {{marketing/content-block

@@ -1,7 +1,19 @@
-.content-block-supporting-text-section {
+.marketing-content-block {
   ul {
-    margin-top: -10px;
-    font-weight: 600;
     list-style: none;
   }
+
+  .content-block-body-text {
+    li {
+      margin-top: 10px;
+    }
+  }
+
+  .content-block-supporting-text-section {
+    ul {
+      margin-top: -10px;
+      font-weight: 600;
+    }
+  }
 }
+

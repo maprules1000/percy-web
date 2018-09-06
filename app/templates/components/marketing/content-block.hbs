@@ -1,15 +1,15 @@
-<section class="border-b border-purple-300 mb-9 pb-9">
+<section class="border-b border-purple-300 mb-9 pb-9 marketing-content-block">
   <div class="container container-lg">
-    <div class="grid {{if (not (eq block.imagePosition "Center")) "col-2"}}">
-      {{#if (and block.mainImage (eq block.imagePosition "Left"))}}
+    <div class="grid {{if (not block.isImageCentered) "col-2"}}">
+      {{#if block.isLeftAlignedImagePresent}}
         <div>
-          <img src="{{block.mainImage.file.url}}" alt={{block.mainImage.description}}>
+          <img src="{{block.imageUrl}}" alt={{block.imageDescription}}>
         </div>
       {{/if}}
-      <div class="grid content-center">
+      <div class="grid content-center {{if block.isImageCentered "text-center"}}">
         <div>
-          {{#if (and block.mainImage (eq block.imagePosition "Center"))}}
-            <img src="{{block.mainImage.file.url}}" alt={{block.mainImage.description}} style="height: 416px;">
+          {{#if block.isCenterAlignedImagePresent}}
+            <img src="{{block.imageUrl}}" alt={{block.imageDescription}} style="height: 416px;">
           {{/if}}
           {{#if block.superheader}}
             <h6 class="uppercase half-underline inline-block py-sm mb-2 text-sm font-bold text-gray-300 tracking-wide border-t">
@@ -30,17 +30,25 @@
           {{/if}}
 
           {{#if block.bodyText}}
-            <p class="">
+            <p class="content-block-body-text">
               {{md-text text=block.bodyText}}
             </p>
           {{/if}}
         </div>
+
+        {{#if (and block.callToActionText block.callToActionLink)}}
+          <div class="grid content-center mb-9">
+            <a href="{{block.callToActionLink}}">{{block.callToActionText}} ></a>
+          </div>
+        {{/if}}
       </div>
-      {{#if (and block.mainImage (eq block.imagePosition "Right"))}}
+
+      {{#if block.isRightAlignedImagePresent}}
         <div>
-          <img src="{{block.mainImage.file.url}}" alt={{block.mainImage.description}}>
+          <img src="{{block.imageUrl}}" alt={{block.imageDescription}}>
         </div>
       {{/if}}
+
     </div>
 
     <div class="grid col-3 gap-4 mb-9 {{if (not block.mainImage) "mt-4"}}">
@@ -64,10 +72,6 @@
       {{/each}}
     </div>
 
-    {{#if (and block.callToActionText block.callToActionLink)}}
-      <div class="grid content-center mb-9">
-        <a href="{{block.callToActionLink}}">{{block.callToActionText}}</a>
-      </div>
-    {{/if}}
+
   </div>
 </section>

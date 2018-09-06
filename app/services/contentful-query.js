@@ -24,4 +24,8 @@ export default Service.extend({
       'fields.type': footerType,
     });
   },
+
+  getCustomerLogos() {
+    return this.store.findAll('customer-logo');
+  },
 });
