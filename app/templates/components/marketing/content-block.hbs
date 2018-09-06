@@ -51,27 +51,28 @@
 
     </div>
 
-    <div class="grid col-3 gap-4 mb-9 {{if (not block.mainImage) "mt-4"}}">
-      {{#each block.supportingTextSections as |supportingText|}}
+    {{#if block.supportingTextSections}}
+      <div class="grid col-3 gap-4 mb-9 {{if (not block.mainImage) "mt-4"}}">
+        {{#each block.supportingTextSections as |supportingText|}}
 
-        <div class="content-block-supporting-text-section">
-          {{#if supportingText.supportingContentImageIcon.file.url}}
-            <img src="{{supportingText.supportingContentImageIcon.file.url}}">
-          {{/if}}
+          <div class="content-block-supporting-text-section">
+            {{#if supportingText.supportingContentImageIcon.file.url}}
+              <img src="{{supportingText.supportingContentImageIcon.file.url}}">
+            {{/if}}
 
-          {{#if supportingText.header}}
-            <div class="font-semibold text-lg">
-              {{supportingText.header}}
-            </div>
-          {{/if}}
+            {{#if supportingText.header}}
+              <div class="font-semibold text-lg">
+                {{supportingText.header}}
+              </div>
+            {{/if}}
 
-          {{#if supportingText.bodyText}}
-            {{md-text text=supportingText.bodyText}}
-          {{/if}}
-        </div>
-      {{/each}}
-    </div>
-
+            {{#if supportingText.bodyText}}
+              {{md-text text=supportingText.bodyText}}
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
 
   </div>
 </section>
