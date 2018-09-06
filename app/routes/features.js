@@ -9,9 +9,6 @@ export default Route.extend(ResetScrollMixin, {
     }
   },
 
-  pageType: 'Visual Testing',
-  footerType: 'Generic',
-
   model() {
     return this.get('store').queryRecord('marketing-page', {
       'fields.pageName': 'Features',

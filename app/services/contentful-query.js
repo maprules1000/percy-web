@@ -1,13 +1,15 @@
-import Mixin from '@ember/object/mixin';
+import Service, {inject as service} from '@ember/service';
 
-var MarketingRoute = Mixin.create({
-  _getHero(pageType) {
+export default Service.extend({
+  store: service(),
+
+  getHero(pageType) {
     return this.store.queryRecord('hero-block', {
       'fields.page': pageType,
     });
   },
 
-  _getContentBlocks(pageType) {
+  getContentBlocks(pageType) {
     return this.store
       .query('content-block', {
         'fields.page': pageType,
@@ -17,11 +19,9 @@ var MarketingRoute = Mixin.create({
       });
   },
 
-  _getFooter(footerType) {
+  getFooter(footerType) {
     return this.store.queryRecord('footer-cta', {
       'fields.type': footerType,
     });
   },
 });
-
-export default MarketingRoute;
