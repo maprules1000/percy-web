@@ -28,4 +28,10 @@ export default Service.extend({
   getCustomerLogos() {
     return this.store.findAll('customer-logo');
   },
+
+  getFAQs(pageType) {
+    return this.store.query('faq', {'fields.page': pageType}).then(faqs => {
+      return faqs.sortBy('order');
+    });
+  },
 });
