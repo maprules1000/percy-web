@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import {task, timeout} from 'ember-concurrency';
 
 export default Component.extend({
   carosel: null,
@@ -12,20 +13,20 @@ export default Component.extend({
     });
 
     this.set('carosel', carosel);
-    this._autoAdvanceSlide();
+    this._autoAdvanceSlide.perform();
   },
 
   actions: {
     next() {
       this.get('carosel').next();
       this._setCurrentSlide();
-      this._clearInterval();
+      this._stopAutoAdvanceSlide();
     },
 
     previous() {
       this.get('carosel').prev();
       this._setCurrentSlide();
-      this._clearInterval();
+      this._stopAutoAdvanceSlide();
     },
 
     switchToSlide(index) {
@@ -38,16 +39,14 @@ export default Component.extend({
     this.set('currentSlide', this.get('carosel').currentSlide);
   },
 
-  _autoAdvanceSlide() {
-    const intervalId = setInterval(() => this.get('carosel').next(), 6000);
-    this.set('intervalId', intervalId);
+  _stopAutoAdvanceSlide() {
+    this._autoAdvanceSlide.cancelAll();
   },
 
-  _clearInterval() {
-    clearInterval(this.get('intervalId'));
-  },
-
-  willDestroyElement() {
-    this._clearInterval();
-  },
+  _autoAdvanceSlide: task(function*() {
+    while (true) {
+      yield timeout(6000);
+      this.get('carosel').next();
+    }
+  }),
 });
